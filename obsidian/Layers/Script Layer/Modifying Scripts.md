@@ -1,10 +1,8 @@
 The game handles scripts in a slightly different way.
-While the editors uses the `/Data/Scripts.rxdata` file, the game itself reads the `/Data/Scripts.rxdata` file.
-
-Why? I don't know.
+While the editors uses the `/Data/Scripts.rxdata` file, the game itself reads the `/Data/xScripts.rxdata` file.
+Don't ask why.
 
 Depending on your approach to scripting, you must take a few steps...
-
 
 So for the game to load your updated scripts, you must save your changes, delete `xScripts.rxdata`, make a copy of `Scripts.rxdata`, and rename it to `xScripts.rxdata`.
 
@@ -37,10 +35,11 @@ Next time the game launches, it will have your modified scripts.
 
 You don't need to worry about packing your scripts with this method.
 
+
 ## Scripting the Right Way
 While more advanced, this setup is one and done, but requires some additional tools and packing the scripts for releases.
 
-Use the [[RMXP Extractor]] to extract the scripts, which will create the `scripts` folder with the extracted script files, and a `_scripts.txt`.
+Use the [[RMXP Extractor]] to extract the scripts, which will create the `scripts` folder with the extracted script files, and a `_scripts.txt` file.
 
 Then set this as the only RPG Maker script via the editor:
 ```ruby
@@ -56,11 +55,9 @@ IO.foreach(list_path) do |name|
 end
 ```
 
-This will read the `_scripts.txt` file, to determine which files are to load from the `scripts` folder, and in what order.
+This will read the `_scripts.txt` file to determine which files are to load from the `scripts` folder, and in what order.
 
-Now you can read, modify, and create new scripts with your favorite text editing program, instead with being forced to suffer RPG Maker's awful script editor.
-Just make sure you save your changes, and relaunch the game for the changes to take effect.
+Now you can read, modify, and create new scripts with your favorite text editing program, instead of being forced to suffer RPG Maker's awful script editor.
+Just make sure you save your changes and relaunch the game for them to take effect.
 
 Any time you add a new script, you must include it in `_scripts.txt`, and make sure it loads after its dependencies, but after whatever it's a dependency for.
-
-**Once you're ready to release your mod**, you should pack the scripts up into a single file via [[RMXP Extractor]], instead of distributing the scripts as is.

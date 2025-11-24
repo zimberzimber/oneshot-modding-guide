@@ -1,9 +1,9 @@
 OneShot uses custom logic to emit footstep sounds.
 This requires editing a script file, and tilesets.
 
+
 ## The Definition
 Each tileset is assigned a set of footstep sound effects it can use in the `Data_Footsteps` script.
-
 A short excerpt from said script:
 
 ```ruby
@@ -40,7 +40,7 @@ You tell the system how many variations there are with the `FOOTSTEP_AMT` block 
 When editing a tileset in the editor, you may assign these sound effects to tiles via `Terrain Tag`.
 The number on the tile corresponds to a sound effect defined in the previous part.
 So in this case, every tile marked as `1` will play `step_gravel`, and every `2` will play `step_wood`:
-![[footsteps1.png]]
+![[foot_steps_1.png]]
 
 `0` does not play a sound effect.
 This is the default behavior.

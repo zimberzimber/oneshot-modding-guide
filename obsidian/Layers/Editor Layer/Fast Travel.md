@@ -14,14 +14,13 @@ unlock_map :ZONE, :IDENTIFIABLE_NAME, :FACING_DIRECTION
 ```
 
 For example, traveling to the first Barrens map looks like so:
-![[fasttravel1.png]]
+![[fast_travel_1.png]]
 
 Fast traveling to this destination will then place the player where the event is.
 
 ## Presentation
 
 Now you must define the name of the zone, and the name of the destination, which is done in the `Data_FastTravel` script.
-
 A short excerpt from the script:
 ```ruby
 ZONES = {

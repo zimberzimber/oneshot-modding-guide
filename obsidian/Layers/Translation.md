@@ -1,4 +1,4 @@
-Translation is fairly straight forward, however you're limited to only modifying existing text, and assets.
+Translation is fairly straight forward, however you're limited to only modifying existing text and assets.
 This means you can't add or remove lines, just translate a line of text to another.
 
 ## Requirements

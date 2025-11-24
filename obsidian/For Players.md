@@ -21,20 +21,21 @@ Some mods may use the vanilla game save directory, causing issues once the mod i
 If launching **clean, vanilla OneShot** displays an error, follow the save reset steps, and try again.
 If launching a mod displays an error, seek help from the mod's developers or community.
 
-As a mod maker, you should set up a separate save directory for your mod, instead of saving over vanilla files.
-Other than saving players who uninstalled the game from trouble, you're also saving yourself the trouble of dealing with your mod loading a vanilla save.
-This will be covered in its own topic.
+See [[Save Directory]] if you're a mod maker - It's very important.
 
 
 ## Save Generator
-See [[Save Generator]].
+hat_kid made a web page where you can generate a vanilla OneShot save file at certain states and/or a different player name:
+https://hatkid.is-a.dev/OneShot-SaveMaker/p-settings-generate.html
 
 
 ## Installing Mods
 It's the same with the itch.io version, you just navigate to the game's directory yourself instead of through Steam.
+[YouTube link](https://youtu.be/f4J28_-tMHY)
 ![[installing_mods.mp4]]
 
 
 ## Uninstalling Mods
 With the itch.io version, you just delete the game files and redownload them from Itch.
+[YouTube link](https://youtu.be/umWhd0_h53Y)
 ![[uninstalling_mods.mp4]]

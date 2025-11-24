@@ -3,8 +3,8 @@ Some of OneShot's maps have events that run once you enter the map.
 They're just events set to `Parallel Processing` trigger to run a few RMXP commands, then delete themselves.
 Usually located in some corner of the map, and really hard to find sometimes.
 
-## Examples from the Barrens:
 
+## Examples from the Barrens:
 Disable fast travel indoors in the `Outpost interior` map.
 Should be in all locations you don't want the player fast traveling from.
 ![[init_events_1.png]]

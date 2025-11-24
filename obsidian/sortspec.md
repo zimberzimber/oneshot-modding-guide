@@ -1,11 +1,14 @@
 ---
 sorting-spec: |
+  Assets
   sortspec
   About
   For Players
   Things to Consider
   Layers
+  Journal App
+  Save Directory
   Collaboration & Version Control
-  Quirks
-  Assets
+  Quality of Life
+  Distribution
 ---
