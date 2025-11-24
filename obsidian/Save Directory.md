@@ -10,32 +10,16 @@ If you think your mod doesn't need this, then ignore this page at your own risk.
 ## Setup
 Read [[Script Layer]], as this requires a very simple script change.
 
-Copy this script:
-```ruby
-# Set your mod's internal name here.
-# Used primarily to set the save directory for your mod.
-MOD_NAME = "CHANGE_ME"
+Create a new script, and have it load before anything else.
+Should look like this if you're doing it through the editor:
+![[save_directory_1.png]]
 
-# Make changes past this point at your own risk
-# --------------------------------------------------
-
-# Ensure the modder actually changed the name
-if MOD_NAME == "CHANGE_ME"
-    print("You did not set the mod's name.")
-    print("See the 'Patch_Init' script for details.")
-    exit()
-end
-
-# Store vanilla save path in case someone might want to use it
-Oneshot::VANILLA_SAVE_PATH = Oneshot::SAVE_PATH
-
-# Override the `SAVE_PATH` constant, and ensure the directory exists
-Oneshot::SAVE_PATH = "#{Oneshot::SAVE_PATH}/mod_#{MOD_NAME}"
-Dir.mkdir(Oneshot::SAVE_PATH) unless File.exist?(Oneshot::SAVE_PATH)
+Copy this code into it:
+```embed-ruby
+PATH: "vault://Assets/save_override.rb"
+TITLE: "Save_Override"
 ```
 
-Create a new script file, move it to the top of the script list, and paste the copied script there.
+
 Then inside the script, change `CHANGE_ME` to your mod's name.
 To avoid any potential issues, use only numbers, underscores, and lower case English characters.
-
-#TODO: Add pictures

@@ -1,4 +1,1 @@
-
-
-Script:
-#TODO 
+You can walk through walls in [[Debug Mode]] while holding the `CANCEL` action, which is the `X` key by default.

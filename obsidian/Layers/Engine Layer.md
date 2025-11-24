@@ -1,5 +1,5 @@
 
-OneShot's core engine is a fork of MKXP, which is an open source rewrite of the RPG Maker XP engine.
+OneShot's core engine is a fork of MKXP, which is an open source rewrite of the RPG Maker XP engine, written in C++.
 
 MKXP repository: https://github.com/Ancurio/mkxp
 OneShot's fork: https://github.com/elizagamedev/mkxp-oneshot

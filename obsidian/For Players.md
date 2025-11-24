@@ -4,6 +4,10 @@ This page contains useful information for players, which modders should also kno
 You can enable the in game speedrun timer by adding a file named `igt.ini` next to the game's `.exe`.
 
 
+## Rebinding Controls
+You can rebind your controls by pressing `F1` in the game.
+
+
 ## True Save Reset
 1) Navigate to `%appdata%/Oneshot`
 2) Delete `save.dat` and `p-settings.dat`

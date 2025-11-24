@@ -1,7 +1,9 @@
 ---
 sorting-spec: |
   sortspec
-  Seeing Collisions
   Noclip
+  Seeing Collisions
+  Event Labels
+  Other Event's Self Switches
   Calling Events
 ---

@@ -42,17 +42,9 @@ While more advanced, this setup is one and done, but requires some additional to
 Use the [[RMXP Extractor]] to extract the scripts, which will create the `scripts` folder with the extracted script files, and a `_scripts.txt` file.
 
 Then set this as the only RPG Maker script via the editor:
-```ruby
-SCRIPTS_ROOT = "scripts"
-
-list_path = File.join(SCRIPTS_ROOT, "_scripts.txt")
-IO.foreach(list_path) do |name|
-  name.strip!
-  next if name.empty? || name.start_with?("#")
-  puts "Loading #{name}"
-
-  require_relative "#{SCRIPTS_ROOT}/#{name}"
-end
+```embed-ruby
+PATH: "vault://Assets/main_override.rb"
+TITLE: "Main"
 ```
 
 This will read the `_scripts.txt` file to determine which files are to load from the `scripts` folder, and in what order.

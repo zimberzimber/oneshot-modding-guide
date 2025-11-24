@@ -1,6 +1,5 @@
-https://github.com/melody-rs/RMXP-Extractor
-
 RMXP Extractor is a Ruby gem which can export/import RPG Maker XP data to/from a more standard data format like JSON.
+[Source code](https://github.com/melody-rs/RMXP-Extractor)
 
 I cannot overstate just how much headache it has spared me from, but I can tell you what I've used it for so far:
 - Extracting/Packing scripts
@@ -13,11 +12,14 @@ I cannot overstate just how much headache it has spared me from, but I can tell 
 When collaborating, it may be worth setting up your source control to track exported data while ignoring the `.rxdata` files themselves.
 I've not tried this myself though, but it sounds like it'd save even more headache, at the cost of taking some getting used to.
 
+
 ## I'm not a programmer, is it still useful?
 It can be, depending on whether or not you can read JSON or YAML.
 You don't need to be a programmer for that, they're just text formats describing data in a readable manner.
 See the examples section at the end of this document.
 
+
+---
 ## Setup
 1) Download and install Ruby.
 2) Open a terminal/console, and execute `gem install rmxp_extractor`
@@ -33,6 +35,7 @@ rmxp_extractor import json scripts
 
 You only need to repeat `1)` and `2)` once per system, the rest are to be repeated per project.
 
+
 ---
 ## Exporting
 Now every time you run `extract.bat`, it should create two folders next to it:
@@ -40,6 +43,7 @@ Now every time you run `extract.bat`, it should create two folders next to it:
 - `Scripts`, which contains all the Ruby scripts extracted from `Scripts.rxdata`
 
 Keep in mind that modifying the extracted content will have no effect on the game, it's simply a copy in a different format.
+
 
 ---
 ## Importing

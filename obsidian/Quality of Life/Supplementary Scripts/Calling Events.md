@@ -12,7 +12,7 @@ For reference, look at vanilla Prophetbot's 4th page to see the normal approach.
 
 ## Usage
 **Example scenario:**
-> Multiple buttons that should elect the same reaction from Silver.
+> Multiple robots that should elect the same reaction from Silver when interacted with.
 
 - Create an event in an unreachable spot, and give it a meaningful name that's unique to the map.
 For example, `silver_react`.
@@ -25,17 +25,17 @@ You can create multiple copies of it, and they will all call the same event.
 If you'd like to change Silver's reaction, you only need to do it in `silver_react`, instead of all the buttons.
 
 **Lets throw in some conditional logic:**
-> Silver's reaction changes based on how many times you've pressed the buttons, regardless of which buttons you've pressed or what order.
+> Silver's reaction changes based on how many times you've interacted with the robots, regardless of which robots you've touched or what order.
 
 The `silver_react` event is still an event, and follows regular event logic.
 This means you can use pages with switches, self switches, or variables to change the result.
 Simply have `silver_react` change one of these, and handle it as you would with any other event.
 
-It doesn't care who called it, so which button you press when has no bearing on the outcome.
+It doesn't care who called it, so which robot you touch and when has no bearing on the outcome.
 
-**Lets further complicate things:**
+**Lets complicate things further:**
 > Silver may be absent from the room.
-> When she's absent, each button should play a different sound when clicked.
+> When she's absent, each robot should play a different sound when touched.
 
 The `call_event` function returns `true` or `false` depending on whether or not it succeeded in calling the event, and if the event had anything to execute.
 
@@ -50,3 +50,9 @@ We'll call it `Silver left room`.
 ![[calling_events_2.png]]
 
 And just like that, most of the logic is handled by one event, without having to update multiple events should Silver's reactions or the switch controlling her presence changes.
+
+In the end, it should look something like this in editor:
+![[calling_events_3.mp4]]
+
+And behave like this in game:
+![[calling_events_4.mp4]]
