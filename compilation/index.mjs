@@ -5,7 +5,7 @@ import filenamify from 'filenamify';
 
 // --skipcontent : Skips converting page content
 // --debugoutput : Output into two documents containing all nodes and backlins
-// --absolutepaths : Setup backlinks for local browsing
+// --backlinkprefix=<path> : Sets a prefix for backlinks
 
 const IGNORED_DIRS = [".obsidian", "Assets"]
 const RESOURCE_DIR = "./resources"
@@ -20,7 +20,11 @@ if (!outputDir)
 
 const skipContent = process.argv.includes("--skipcontent")
 const debugOutput = process.argv.includes("--debugoutput")
-const absolutePaths = process.argv.includes("--absolutepaths")
+
+let backlinkPrefix = ""
+const backlinkPrefixArg = process.argv.find(arg => arg.startsWith("--backlinkprefix="))
+if (backlinkPrefixArg)
+    backlinkPrefix = backlinkPrefixArg.replace("--backlinkprefix=", '')
 
 const htmlTemplate = fs.readFileSync(RESOURCE_DIR + "/template.html", "utf8")
     .replace("{{STATIC.SCRIPT}}", fs.readFileSync(RESOURCE_DIR + "/script.js", "utf8"))
@@ -170,7 +174,7 @@ function buildNavigationHierarchy(nodes, relativePath) {
 
 const contentNodes = gather(vaultDir)
 
-const navHierarchy = buildNavigationHierarchy(contentNodes, absolutePaths ? `file:///${outputDir}` : "")
+const navHierarchy = buildNavigationHierarchy(contentNodes, backlinkPrefix)
 postProcessContent(contentNodes, navHierarchy)
 
 if (debugOutput) {
