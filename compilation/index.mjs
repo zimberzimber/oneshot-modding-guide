@@ -1,30 +1,29 @@
 import fs from "fs"
 import path from "path"
-import { spawnSync } from "child_process"
+import { execSync, spawnSync } from "child_process"
 import filenamify from 'filenamify';
 
 // --skipcontent : Skips converting page content
 // --debugoutput : Output into two documents containing all nodes and backlins
-// --backlinkprefix=<path> : Sets a prefix for backlinks
+// --localbacklinks : Configure backlinks for local browsing
 
 const IGNORED_DIRS = [".obsidian", "Assets"]
 const RESOURCE_DIR = "./resources"
 
-const vaultDir = process.argv[2]
-if (!vaultDir)
-    throw "No vault diretory given."
+const rootDir = execSync("git rev-parse --show-toplevel", { encoding: "utf8" }).trim()
 
-const outputDir = process.argv[3]
-if (!outputDir)
-    throw "No output diretory given."
+const vaultDir = `${rootDir}/obsidian`
+const outputDir = `${rootDir}/docs`
 
 const skipContent = process.argv.includes("--skipcontent")
 const debugOutput = process.argv.includes("--debugoutput")
+const localbackLinks = process.argv.includes("--localbacklinks")
 
 let backlinkPrefix = ""
-const backlinkPrefixArg = process.argv.find(arg => arg.startsWith("--backlinkprefix="))
-if (backlinkPrefixArg)
-    backlinkPrefix = backlinkPrefixArg.replace("--backlinkprefix=", '')
+if (localbackLinks)
+    backlinkPrefix = `file://${outputDir}`
+else
+    backlinkPrefix = "/" + execSync("git config --get remote.origin.url", { encoding: "utf8" }).trim().split('/').pop().replace(/\.git$/g, '')
 
 const htmlTemplate = fs.readFileSync(RESOURCE_DIR + "/template.html", "utf8")
     .replace("{{STATIC.SCRIPT}}", fs.readFileSync(RESOURCE_DIR + "/script.js", "utf8"))
