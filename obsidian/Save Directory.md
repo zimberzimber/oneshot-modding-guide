@@ -16,8 +16,10 @@ Should look like this if you're doing it through the editor:
 
 Copy this code into it:
 ```embed-ruby
-PATH: "vault://Assets/save_override.rb"
-TITLE: "Save_Override"
+{
+	"PATH": "vault://Assets/save_override.rb",
+	"TITLE": "Save_Override"
+}
 ```
 
 

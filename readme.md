@@ -11,6 +11,11 @@ Plugins used:
 - [Embed Code File](https://github.com/almariah/embed-code-file)
 
 
+# Compiling to HTML
+The Obsidian vault is compiled into browsable HTML pages using JavaScript and Pandoc.
+See `copmpilation` directory for more details.
+
+
 # Contribution
 DM me on Discord through either the Fading Memory server, Official OneShot server, or Future Cat Games server.  
 First two can be found via server discovery.

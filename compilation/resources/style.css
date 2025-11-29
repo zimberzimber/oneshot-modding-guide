@@ -3,8 +3,17 @@
   src: url('TerminusTTF.ttf') format('truetype');
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  color: #E1E1E1;
+}
+
 p {
   white-space: pre-wrap;
+  margin-top: 0;
+  font-size: 1.5rem;
 }
 
 h1,
@@ -14,13 +23,7 @@ h4,
 h5,
 h6 {
   color: white;
-}
-
-
-code {
-  background: #202746;
-  padding: 0 4px;
-  margin: 0 -4px;
+  margin-bottom: 0;
 }
 
 a:link {
@@ -39,17 +42,37 @@ a:active {
   color: #FFFF00;
 }
 
-.copy-code-block-button {
-  position: absolute;
-  right: 8px;
+pre code.hljs {
+ overflow-x: hidden;
+ display: inline-block;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  color: #F3F3F3;
+code {
+  background: #202746;
+  padding: 0 4px;
+  margin: 0 -4px;
 }
+
+.sourceCode {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+div.sourceCode > pre.sourceCode {
+  margin-top: 0;
+  max-height: 20rem;
+  overflow: auto;
+}
+
+div.sourceCode {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.copy-code-block-button {
+  width: 100%;
+}
+
 
 img,
 video {
@@ -62,16 +85,18 @@ video {
 }
 
 .side {
-  width: 240px;
+  min-width: 240px;
+  max-width: 25%;
   background: #4f2b77;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  overflow-y: scroll;
+  direction: rtl;
+}
+
+.side * {
+  direction: ltr;
 }
 
 .content {
-  margin-left: 240px;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -83,4 +108,8 @@ video {
 ul.navtree {
   padding-left: 20px;
   padding-right: 5px;
+}
+
+ul li .navtree {
+  list-style-type: disc;
 }

@@ -14,6 +14,8 @@ Should look like this if you're doing it through the editor:
 Then copy the contents of this code block into it:
 
 ```embed-ruby
-PATH: "vault://Assets/supplimentary_scripts.rb"
-TITLE: "Supplimentary_Scripts"
+{
+	"PATH": "vault://Assets/supplimentary_scripts.rb",
+	"TITLE": "Supplimentary_Scripts"
+}
 ```

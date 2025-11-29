@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "compile": "node ./index.mjs ../obsidian \"D:/git repositories/OneShot Modding Guide/docs\" --backlinkprefix=/oneshot-modding-guide"
+  },
   "dependencies": {
     "filenamify": "^7.0.1"
   }

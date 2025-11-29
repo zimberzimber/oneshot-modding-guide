@@ -77,12 +77,20 @@ function buildNode(title, fileEntity, dirEntity) {
     return node
 }
 
+function preprocessMarkdown(content) {
+    return content.replaceAll(/```embed-ruby([\s\S]*?)```/gm, (match, g1) => {
+        const embedConfig = JSON.parse(g1)
+        const scriptPath = embedConfig.PATH.replace("vault:/", vaultDir)
+        const scriptContent = fs.readFileSync(scriptPath, "utf8")
+        return `\`\`\`ruby\n${scriptContent}\n\`\`\``
+    })
+}
+
 function getContent(path) {
     if (skipContent)
         return "CONTENT SKIPPED"
 
     const args = [
-        path,
         "-f", "markdown+wikilinks_title_after_pipe+lists_without_preceding_blankline",
         "-t", "html",
         `--resource-path=${assetsDir}`,
@@ -91,6 +99,7 @@ function getContent(path) {
     ];
 
     const proc = spawnSync("pandoc", args, {
+        input: preprocessMarkdown(fs.readFileSync(path, "utf8")),
         encoding: "utf8",
         maxBuffer: 1024 * 1024 * 200
     });

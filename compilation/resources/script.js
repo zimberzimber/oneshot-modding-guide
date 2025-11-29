@@ -54,7 +54,7 @@ function buildNavigationTree(data) {
 
 
 function addCodeBlockCopyButtons() {
-	const codeBlocks = document.querySelectorAll("pre.sourceCode")
+	const codeBlocks = document.querySelectorAll("div.sourceCode")
 	for (block of codeBlocks) {
 		const button = createCodeBlockCopyButton()
 		block.prepend(button)
