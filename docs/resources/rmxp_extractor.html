@@ -1,16 +1,12 @@
-<!doctype html>
-<html>
-
-<head>
+<!DOCTYPE html><html><head>
 	<meta charset="utf-8">
 
 	<title>RMXP Extractor</title>
 
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-	<style>@font-face {
+	<style id="custom_style">@font-face {
   font-family: 'Terminus TTF';
   src: url('TerminusTTF.ttf') format('truetype');
 }
@@ -130,62 +126,7 @@ ul.navtree {
 ul li .navtree {
   list-style-type: disc;
 }</style>
-	<script>const BACKLINK_NAV_DATA = [{"title":"Index","path":"/oneshot-modding-guide/index.html","children":null},{"title":"For Players","path":"/oneshot-modding-guide/for_players.html","children":null},{"title":"Things to Consider","path":"/oneshot-modding-guide/things_to_consider.html","children":null},{"title":"Layers","path":"/oneshot-modding-guide/layers.html","children":[{"title":"Translation","path":"/oneshot-modding-guide/layers/translation.html","children":null},{"title":"Asset Layer","path":"/oneshot-modding-guide/layers/asset_layer.html","children":[{"title":"Character Sprite Layout","path":"/oneshot-modding-guide/layers/asset_layer/character_sprite_layout.html","children":null},{"title":"Light Maps","path":"/oneshot-modding-guide/layers/asset_layer/light_maps.html","children":null},{"title":"Tileset Layout","path":"/oneshot-modding-guide/layers/asset_layer/tileset_layout.html","children":null},{"title":"Visual Style Guide","path":"/oneshot-modding-guide/layers/asset_layer/visual_style_guide.html","children":null}]},{"title":"Editor Layer","path":"/oneshot-modding-guide/layers/editor_layer.html","children":[{"title":"Common Text","path":"/oneshot-modding-guide/layers/editor_layer/common_text.html","children":null},{"title":"Init Events","path":"/oneshot-modding-guide/layers/editor_layer/init_events.html","children":null},{"title":"Wide Map Transfers","path":"/oneshot-modding-guide/layers/editor_layer/wide_map_transfers.html","children":null},{"title":"Item Combinations","path":"/oneshot-modding-guide/layers/editor_layer/item_combinations.html","children":null},{"title":"Fast Travel","path":"/oneshot-modding-guide/layers/editor_layer/fast_travel.html","children":null},{"title":"Footstep SFX","path":"/oneshot-modding-guide/layers/editor_layer/footstep_sfx.html","children":null}]},{"title":"Script Layer","path":"/oneshot-modding-guide/layers/script_layer.html","children":[{"title":"Modifying Scripts","path":"/oneshot-modding-guide/layers/script_layer/modifying_scripts.html","children":null}]},{"title":"Engine Layer","path":"/oneshot-modding-guide/layers/engine_layer.html","children":[{"title":"Using a Different Engine","path":"/oneshot-modding-guide/layers/engine_layer/using_a_different_engine.html","children":null}]}]},{"title":"Journal App","path":"/oneshot-modding-guide/journal_app.html","children":null},{"title":"Save Directory","path":"/oneshot-modding-guide/save_directory.html","children":null},{"title":"Collaboration & Version Control","path":"/oneshot-modding-guide/collaboration_&_version_control.html","children":null},{"title":"Quality of Life","path":"/oneshot-modding-guide/quality_of_life.html","children":[{"title":"Frozen Editor During Playtesting","path":"/oneshot-modding-guide/quality_of_life/frozen_editor_during_playtesting.html","children":null},{"title":"Closing the Game","path":"/oneshot-modding-guide/quality_of_life/closing_the_game.html","children":null},{"title":"Debug Mode","path":"/oneshot-modding-guide/quality_of_life/debug_mode.html","children":null},{"title":"Supplementary Scripts","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts.html","children":[{"title":"Easier Debug","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/easier_debug.html","children":null},{"title":"Live Map Modification","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/live_map_modification.html","children":null},{"title":"Noclip","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/noclip.html","children":null},{"title":"Seeing Collisions","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/seeing_collisions.html","children":null},{"title":"Event Labels","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/event_labels.html","children":null},{"title":"Other Event's Self Switches","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/other_event's_self_switches.html","children":null},{"title":"Calling Events","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/calling_events.html","children":null}]},{"title":"Editor Version","path":"/oneshot-modding-guide/quality_of_life/editor_version.html","children":null}]},{"title":"Distribution","path":"/oneshot-modding-guide/distribution.html","children":null},{"title":"Resources","path":null,"children":[{"title":"Dialogue Transcript","path":"/oneshot-modding-guide/resources/dialogue_transcript.html","children":null},{"title":"Fonts","path":"/oneshot-modding-guide/resources/fonts.html","children":null},{"title":"RMXP Extractor","path":"/oneshot-modding-guide/resources/rmxp_extractor.html","children":null}]}]</script>
-	<script defer>
-
-function normalizeWikilinks() {
-	const openNodes = [...BACKLINK_NAV_DATA]
-	const linkDictionary = {}
-	while (openNodes.length > 0) {
-		node = openNodes.pop()
-
-		if (node.path)
-			linkDictionary[node.title] = node.path
-
-		if (node.children)
-			openNodes.push(...node.children)
-	}
-
-	for (const wikilink of document.querySelectorAll("a.wikilink")) {
-		const fixedLink = linkDictionary[wikilink.innerText]
-		if (fixedLink)
-			wikilink.href = fixedLink
-	}
-}
-
-function buildNavigationTree(data) {
-	const ul = document.createElement('ul')
-	ul.classList.add("navtree")
-
-	for (const node of data) {
-		const li = document.createElement('li')
-		li.classList.add("navtree")
-
-		if (node.path) {
-			const a = document.createElement('a')
-			a.classList.add("navtree")
-
-			a.textContent = node.title;
-			a.href = node.path;
-			li.appendChild(a);
-		} else {
-			const span = document.createElement('span')
-			span.classList.add("navtree")
-
-			span.textContent = node.title;
-			li.appendChild(span)
-		}
-
-		if (node.children)
-			li.appendChild(buildNavigationTree(node.children))
-
-		ul.appendChild(li)
-	}
-
-	return ul;
-}
-
-
+	<script id="custom_script">
 function addCodeBlockCopyButtons() {
 	const codeBlocks = document.querySelectorAll("div.sourceCode")
 	for (block of codeBlocks) {
@@ -213,22 +154,16 @@ function copyCodeBlock(caller) {
 
 window.onload = () => {
 	hljs.highlightAll()
-	normalizeWikilinks()
 	addCodeBlockCopyButtons()
-
-	const xd = buildNavigationTree(BACKLINK_NAV_DATA)
-	document.querySelector(".side").appendChild(xd)
 }</script>
 </head>
 
 <body>
 	<div class="layout">
-		<aside class="side">
-		</aside>
-		<main class="content">
-			<h1>RMXP Extractor</h1>
-
-			<p>RMXP Extractor is a Ruby gem which can export/import RPG Maker XP data to/from a more standard data format like JSON.
+		<aside id="navigation_tree" class="side"> <ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/index.html" nav-title="Index">Index</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/for_players.html" nav-title="For Players">For Players</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/things_to_consider.html" nav-title="Things to Consider">Things to Consider</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers.html" nav-title="Layers">Layers</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/translation.html" nav-title="Translation">Translation</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer.html" nav-title="Asset Layer">Asset Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/character_sprite_layout.html" nav-title="Character Sprite Layout">Character Sprite Layout</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/light_maps.html" nav-title="Light Maps">Light Maps</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/tileset_layout.html" nav-title="Tileset Layout">Tileset Layout</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/visual_style_guide.html" nav-title="Visual Style Guide">Visual Style Guide</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer.html" nav-title="Editor Layer">Editor Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/common_text.html" nav-title="Common Text">Common Text</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/init_events.html" nav-title="Init Events">Init Events</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/wide_map_transfers.html" nav-title="Wide Map Transfers">Wide Map Transfers</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/item_combinations.html" nav-title="Item Combinations">Item Combinations</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/fast_travel.html" nav-title="Fast Travel">Fast Travel</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/footstep_sfx.html" nav-title="Footstep SFX">Footstep SFX</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/script_layer.html" nav-title="Script Layer">Script Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/script_layer/modifying_scripts.html" nav-title="Modifying Scripts">Modifying Scripts</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/engine_layer.html" nav-title="Engine Layer">Engine Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/engine_layer/using_a_different_engine.html" nav-title="Using a Different Engine">Using a Different Engine</a></li></ul></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/journal_app.html" nav-title="Journal App">Journal App</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/save_directory.html" nav-title="Save Directory">Save Directory</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/collaboration_&amp;_version_control.html" nav-title="Collaboration &amp; Version Control">Collaboration &amp; Version Control</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life.html" nav-title="Quality of Life">Quality of Life</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/frozen_editor_during_playtesting.html" nav-title="Frozen Editor During Playtesting">Frozen Editor During Playtesting</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/closing_the_game.html" nav-title="Closing the Game">Closing the Game</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/debug_mode.html" nav-title="Debug Mode">Debug Mode</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts.html" nav-title="Supplementary Scripts">Supplementary Scripts</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/easier_debug.html" nav-title="Easier Debug">Easier Debug</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/live_map_modification.html" nav-title="Live Map Modification">Live Map Modification</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/noclip.html" nav-title="Noclip">Noclip</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/seeing_collisions.html" nav-title="Seeing Collisions">Seeing Collisions</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/event_labels.html" nav-title="Event Labels">Event Labels</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/other_event's_self_switches.html" nav-title="Other Event's Self Switches">Other Event's Self Switches</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/calling_events.html" nav-title="Calling Events">Calling Events</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/editor_version.html" nav-title="Editor Version">Editor Version</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/distribution.html" nav-title="Distribution">Distribution</a></li><li class="navtree"><span class="navtree" nav-title="Resources">Resources</span><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/resources/dialogue_transcript.html" nav-title="Dialogue Transcript">Dialogue Transcript</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/resources/fonts.html" nav-title="Fonts">Fonts</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/resources/rmxp_extractor.html" nav-title="RMXP Extractor" selected="true">RMXP Extractor</a></li></ul></li></ul></aside>
+		<main id="page_content" class="content">
+			<h1 id="page_title">RMXP Extractor</h1>
+		<p>RMXP Extractor is a Ruby gem which can export/import RPG Maker XP data to/from a more standard data format like JSON.
 <a href="https://github.com/melody-rs/RMXP-Extractor">Source code</a></p>
 <p>I cannot overstate just how much headache it has spared me from, but I can tell you what I’ve used it for so far:</p>
 <ul>
@@ -245,7 +180,7 @@ I’ve not tried this myself though, but it sounds like it’d save even more he
 <p>It can be, depending on whether or not you can read JSON or YAML.
 You don’t need to be a programmer for that, they’re just text formats describing data in a readable manner.
 See the examples section at the end of this document.</p>
-<hr />
+<hr>
 <h2 id="setup">Setup</h2>
 <ol type="1">
 <li>Download and install Ruby.</li>
@@ -259,7 +194,7 @@ See the examples section at the end of this document.</p>
 </ol>
 <pre class="batch"><code>rmxp_extractor import json scripts</code></pre>
 <p>You only need to repeat <code>1)</code> and <code>2)</code> once per system, the rest are to be repeated per project.</p>
-<hr />
+<hr>
 <h2 id="exporting">Exporting</h2>
 <p>Now every time you run <code>extract.bat</code>, it should create two folders next to it:</p>
 <ul>
@@ -267,23 +202,22 @@ See the examples section at the end of this document.</p>
 <li><code>Scripts</code>, which contains all the Ruby scripts extracted from <code>Scripts.rxdata</code></li>
 </ul>
 <p>Keep in mind that modifying the extracted content will have no effect on the game, it’s simply a copy in a different format.</p>
-<hr />
+<hr>
 <h2 id="importing">Importing</h2>
 <p>If you’ve made changes to the extracted content which you do want in the game, you can perform the inverse operation to pack the data back up into <code>.rxdata</code> for the game.</p>
 <p>Running <code>import.bat</code> will pack all the exported data from <code>Data_JSON</code> and <code>Scripts</code>.</p>
 <p>I <strong>HIGHLY</strong> suggest you only do this if know what you’re doing, because you <em>can</em> lose data if you’re not careful.</p>
 <p>Since it will override data with what was exported, doing something like exporting data, making changes in the editor, then importing data, will lose everything you’ve done between the export and the import.</p>
 <p>#TODO: There’s a bug in the <code>import</code> command that doesn’t pack up script commands properly. look into it.</p>
-<hr />
+<hr>
 <h2 id="some-examples">Some Examples</h2>
 <p>Here’s a short example for how to search for text in the game:
 #TODO
 Keep in mind that each text line in the editor is a separate command</p>
 <p>This can technically be used to find anything, but it can get complicated depending on what you’re searching for.</p>
 <p>I <em>may</em> make a tool that would help looking for common things, but don’t count on it.</p>
-
-		</main>
+</main>
 	</div>
-</body>
 
-</html>
+
+</body></html>

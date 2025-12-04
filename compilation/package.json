@@ -4,6 +4,7 @@
     "compile-local": "node ./index.mjs --localbacklinks"
   },
   "dependencies": {
+    "cheerio": "1.1.2",
     "filenamify": "7.0.1"
   }
 }

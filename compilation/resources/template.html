@@ -4,25 +4,20 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>{{PAGE.TITLE}}</title>
+	<title></title>
 
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-	<style>{{STATIC.STYLE}}</style>
-	<script>{{PAGE.NAV_DATA}}</script>
-	<script defer>{{STATIC.SCRIPT}}</script>
+	<style id="custom_style"></style>
+	<script id="custom_script"></script>
 </head>
 
 <body>
 	<div class="layout">
-		<aside class="side">
-		</aside>
-		<main class="content">
-			<h1>{{PAGE.TITLE}}</h1>
-
-			{{PAGE.CONTENT}}
+		<aside id="navigation_tree" class="side"> </aside>
+		<main id="page_content" class="content">
+			<h1 id="page_title"></h1>
 		</main>
 	</div>
 </body>

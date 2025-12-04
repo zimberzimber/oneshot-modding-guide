@@ -1,16 +1,12 @@
-<!doctype html>
-<html>
-
-<head>
+<!DOCTYPE html><html><head>
 	<meta charset="utf-8">
 
 	<title>Journal App</title>
 
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-	<style>@font-face {
+	<style id="custom_style">@font-face {
   font-family: 'Terminus TTF';
   src: url('TerminusTTF.ttf') format('truetype');
 }
@@ -130,62 +126,7 @@ ul.navtree {
 ul li .navtree {
   list-style-type: disc;
 }</style>
-	<script>const BACKLINK_NAV_DATA = [{"title":"Index","path":"/oneshot-modding-guide/index.html","children":null},{"title":"For Players","path":"/oneshot-modding-guide/for_players.html","children":null},{"title":"Things to Consider","path":"/oneshot-modding-guide/things_to_consider.html","children":null},{"title":"Layers","path":"/oneshot-modding-guide/layers.html","children":[{"title":"Translation","path":"/oneshot-modding-guide/layers/translation.html","children":null},{"title":"Asset Layer","path":"/oneshot-modding-guide/layers/asset_layer.html","children":[{"title":"Character Sprite Layout","path":"/oneshot-modding-guide/layers/asset_layer/character_sprite_layout.html","children":null},{"title":"Light Maps","path":"/oneshot-modding-guide/layers/asset_layer/light_maps.html","children":null},{"title":"Tileset Layout","path":"/oneshot-modding-guide/layers/asset_layer/tileset_layout.html","children":null},{"title":"Visual Style Guide","path":"/oneshot-modding-guide/layers/asset_layer/visual_style_guide.html","children":null}]},{"title":"Editor Layer","path":"/oneshot-modding-guide/layers/editor_layer.html","children":[{"title":"Common Text","path":"/oneshot-modding-guide/layers/editor_layer/common_text.html","children":null},{"title":"Init Events","path":"/oneshot-modding-guide/layers/editor_layer/init_events.html","children":null},{"title":"Wide Map Transfers","path":"/oneshot-modding-guide/layers/editor_layer/wide_map_transfers.html","children":null},{"title":"Item Combinations","path":"/oneshot-modding-guide/layers/editor_layer/item_combinations.html","children":null},{"title":"Fast Travel","path":"/oneshot-modding-guide/layers/editor_layer/fast_travel.html","children":null},{"title":"Footstep SFX","path":"/oneshot-modding-guide/layers/editor_layer/footstep_sfx.html","children":null}]},{"title":"Script Layer","path":"/oneshot-modding-guide/layers/script_layer.html","children":[{"title":"Modifying Scripts","path":"/oneshot-modding-guide/layers/script_layer/modifying_scripts.html","children":null}]},{"title":"Engine Layer","path":"/oneshot-modding-guide/layers/engine_layer.html","children":[{"title":"Using a Different Engine","path":"/oneshot-modding-guide/layers/engine_layer/using_a_different_engine.html","children":null}]}]},{"title":"Journal App","path":"/oneshot-modding-guide/journal_app.html","children":null},{"title":"Save Directory","path":"/oneshot-modding-guide/save_directory.html","children":null},{"title":"Collaboration & Version Control","path":"/oneshot-modding-guide/collaboration_&_version_control.html","children":null},{"title":"Quality of Life","path":"/oneshot-modding-guide/quality_of_life.html","children":[{"title":"Frozen Editor During Playtesting","path":"/oneshot-modding-guide/quality_of_life/frozen_editor_during_playtesting.html","children":null},{"title":"Closing the Game","path":"/oneshot-modding-guide/quality_of_life/closing_the_game.html","children":null},{"title":"Debug Mode","path":"/oneshot-modding-guide/quality_of_life/debug_mode.html","children":null},{"title":"Supplementary Scripts","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts.html","children":[{"title":"Easier Debug","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/easier_debug.html","children":null},{"title":"Live Map Modification","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/live_map_modification.html","children":null},{"title":"Noclip","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/noclip.html","children":null},{"title":"Seeing Collisions","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/seeing_collisions.html","children":null},{"title":"Event Labels","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/event_labels.html","children":null},{"title":"Other Event's Self Switches","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/other_event's_self_switches.html","children":null},{"title":"Calling Events","path":"/oneshot-modding-guide/quality_of_life/supplementary_scripts/calling_events.html","children":null}]},{"title":"Editor Version","path":"/oneshot-modding-guide/quality_of_life/editor_version.html","children":null}]},{"title":"Distribution","path":"/oneshot-modding-guide/distribution.html","children":null},{"title":"Resources","path":null,"children":[{"title":"Dialogue Transcript","path":"/oneshot-modding-guide/resources/dialogue_transcript.html","children":null},{"title":"Fonts","path":"/oneshot-modding-guide/resources/fonts.html","children":null},{"title":"RMXP Extractor","path":"/oneshot-modding-guide/resources/rmxp_extractor.html","children":null}]}]</script>
-	<script defer>
-
-function normalizeWikilinks() {
-	const openNodes = [...BACKLINK_NAV_DATA]
-	const linkDictionary = {}
-	while (openNodes.length > 0) {
-		node = openNodes.pop()
-
-		if (node.path)
-			linkDictionary[node.title] = node.path
-
-		if (node.children)
-			openNodes.push(...node.children)
-	}
-
-	for (const wikilink of document.querySelectorAll("a.wikilink")) {
-		const fixedLink = linkDictionary[wikilink.innerText]
-		if (fixedLink)
-			wikilink.href = fixedLink
-	}
-}
-
-function buildNavigationTree(data) {
-	const ul = document.createElement('ul')
-	ul.classList.add("navtree")
-
-	for (const node of data) {
-		const li = document.createElement('li')
-		li.classList.add("navtree")
-
-		if (node.path) {
-			const a = document.createElement('a')
-			a.classList.add("navtree")
-
-			a.textContent = node.title;
-			a.href = node.path;
-			li.appendChild(a);
-		} else {
-			const span = document.createElement('span')
-			span.classList.add("navtree")
-
-			span.textContent = node.title;
-			li.appendChild(span)
-		}
-
-		if (node.children)
-			li.appendChild(buildNavigationTree(node.children))
-
-		ul.appendChild(li)
-	}
-
-	return ul;
-}
-
-
+	<script id="custom_script">
 function addCodeBlockCopyButtons() {
 	const codeBlocks = document.querySelectorAll("div.sourceCode")
 	for (block of codeBlocks) {
@@ -213,31 +154,24 @@ function copyCodeBlock(caller) {
 
 window.onload = () => {
 	hljs.highlightAll()
-	normalizeWikilinks()
 	addCodeBlockCopyButtons()
-
-	const xd = buildNavigationTree(BACKLINK_NAV_DATA)
-	document.querySelector(".side").appendChild(xd)
 }</script>
 </head>
 
 <body>
 	<div class="layout">
-		<aside class="side">
-		</aside>
-		<main class="content">
-			<h1>Journal App</h1>
-
-			<p>Aka <code>_______.exe</code> or the clover app, is a separate program.
+		<aside id="navigation_tree" class="side"> <ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/index.html" nav-title="Index">Index</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/for_players.html" nav-title="For Players">For Players</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/things_to_consider.html" nav-title="Things to Consider">Things to Consider</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers.html" nav-title="Layers">Layers</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/translation.html" nav-title="Translation">Translation</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer.html" nav-title="Asset Layer">Asset Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/character_sprite_layout.html" nav-title="Character Sprite Layout">Character Sprite Layout</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/light_maps.html" nav-title="Light Maps">Light Maps</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/tileset_layout.html" nav-title="Tileset Layout">Tileset Layout</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/asset_layer/visual_style_guide.html" nav-title="Visual Style Guide">Visual Style Guide</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer.html" nav-title="Editor Layer">Editor Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/common_text.html" nav-title="Common Text">Common Text</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/init_events.html" nav-title="Init Events">Init Events</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/wide_map_transfers.html" nav-title="Wide Map Transfers">Wide Map Transfers</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/item_combinations.html" nav-title="Item Combinations">Item Combinations</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/fast_travel.html" nav-title="Fast Travel">Fast Travel</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/editor_layer/footstep_sfx.html" nav-title="Footstep SFX">Footstep SFX</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/script_layer.html" nav-title="Script Layer">Script Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/script_layer/modifying_scripts.html" nav-title="Modifying Scripts">Modifying Scripts</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/engine_layer.html" nav-title="Engine Layer">Engine Layer</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/layers/engine_layer/using_a_different_engine.html" nav-title="Using a Different Engine">Using a Different Engine</a></li></ul></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/journal_app.html" nav-title="Journal App" selected="true">Journal App</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/save_directory.html" nav-title="Save Directory">Save Directory</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/collaboration_&amp;_version_control.html" nav-title="Collaboration &amp; Version Control">Collaboration &amp; Version Control</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life.html" nav-title="Quality of Life">Quality of Life</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/frozen_editor_during_playtesting.html" nav-title="Frozen Editor During Playtesting">Frozen Editor During Playtesting</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/closing_the_game.html" nav-title="Closing the Game">Closing the Game</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/debug_mode.html" nav-title="Debug Mode">Debug Mode</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts.html" nav-title="Supplementary Scripts">Supplementary Scripts</a><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/easier_debug.html" nav-title="Easier Debug">Easier Debug</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/live_map_modification.html" nav-title="Live Map Modification">Live Map Modification</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/noclip.html" nav-title="Noclip">Noclip</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/seeing_collisions.html" nav-title="Seeing Collisions">Seeing Collisions</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/event_labels.html" nav-title="Event Labels">Event Labels</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/other_event's_self_switches.html" nav-title="Other Event's Self Switches">Other Event's Self Switches</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/supplementary_scripts/calling_events.html" nav-title="Calling Events">Calling Events</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/quality_of_life/editor_version.html" nav-title="Editor Version">Editor Version</a></li></ul></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/distribution.html" nav-title="Distribution">Distribution</a></li><li class="navtree"><span class="navtree" nav-title="Resources">Resources</span><ul class="navtree"><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/resources/dialogue_transcript.html" nav-title="Dialogue Transcript">Dialogue Transcript</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/resources/fonts.html" nav-title="Fonts">Fonts</a></li><li class="navtree"><a class="navtree" href="file://D:/git repositories/OneShot Modding Guide/docs/resources/rmxp_extractor.html" nav-title="RMXP Extractor">RMXP Extractor</a></li></ul></li></ul></aside>
+		<main id="page_content" class="content">
+			<h1 id="page_title">Journal App</h1>
+		<p>Aka <code>_______.exe</code> or the clover app, is a separate program.
 Other than displaying the journal pages, it also handles Niko walking out of the game window.</p>
 <p>You can’t modify its behavior without delving into the <a href="Engine Layer" class="wikilink">Engine Layer</a>, but you can modify the graphics of the pages.</p>
 <p>The journal pulls the pages from the game’s <code>Graphics/Journal</code> and <code>Graphics/Fogs/_</code> directories, which you can modify.
 The only exceptions to that are the default white clover cover, and the sprite of Niko walking on your screen, as they’re hardcoded into the executable.</p>
 <p>You’ll notice that <code>Graphics/Journal</code> contains Niko’s sprites, but the journal doesn’t use them.</p>
 <p>By the way, you can spawn Niko on your screen by executing <code>_______.exe X Y</code>, replacing the X and Y with initial screen coordinates, from the app’s directory.</p>
-
-		</main>
+</main>
 	</div>
-</body>
 
-</html>
+
+</body></html>
