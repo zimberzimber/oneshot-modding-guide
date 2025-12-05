@@ -174,7 +174,10 @@ function buildNavigationHierarchy(nodes, relativePath) {
 
         if (node.children) {
             const children = buildNavigationHierarchy(node.children, `${relativePath}/${node.path_part}`)
-            li.append(children)
+            if (children){
+                li.append(children)
+                li.addClass("parent")
+            }
         }
 
         ul.append(li)
