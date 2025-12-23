@@ -4,7 +4,7 @@ sorting-spec: |
   Tileset Layout
   Character Sprite Layout
   Light Maps
-  Visual Style Guide
-  Music Sample
+  Visual Style
+  Music Samples
   Sound Effects
 ---
