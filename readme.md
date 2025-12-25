@@ -13,7 +13,7 @@ Plugins used:
 
 # Compiling to HTML
 The Obsidian vault is compiled into browsable HTML pages using JavaScript and Pandoc.
-See `copmpilation` directory for more details.
+See `compilation` directory for more details.
 
 
 # Contribution
