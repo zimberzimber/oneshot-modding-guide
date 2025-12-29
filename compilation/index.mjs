@@ -248,9 +248,16 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary) {
             for (let e of html("a.wikilink")) {
                 e = html(e)
                 const title = e.text()
-                const href = wikilinkDictinary[title]
-                if (!href)
-                    throw new Error(`Href not found for wikilink title: ${title}`)
+                let href = wikilinkDictinary[title]
+                if (!href) {
+                    // Might be referring to file instead
+                    const elemHref = e.attr("href")
+                    if (fs.existsSync(path.join(assetsDir, elemHref))){
+                        href = `${backlinkPrefix}/_assets/${elemHref}}`
+                    } else {
+                        throw new Error(`Href not found for: ${title}`)
+                    }
+                }
 
                 e.attr("href", href)
             }
