@@ -253,7 +253,7 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary) {
                     // Might be referring to file instead
                     const elemHref = e.attr("href")
                     if (fs.existsSync(path.join(assetsDir, elemHref))){
-                        href = `${backlinkPrefix}/_assets/${elemHref}}`
+                        href = `${backlinkPrefix}/_assets/${elemHref}`
                     } else {
                         throw new Error(`Href not found for: ${title}`)
                     }
