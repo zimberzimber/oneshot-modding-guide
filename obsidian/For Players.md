@@ -1,5 +1,11 @@
 This page contains useful information for players, which modders should also know about.
 
+
+## Streamer Privacy
+Some of OneShot's mechanics may have you accidentally revealing private information about yourself when streaming to an audience, and doesn't have a streamer mode to prevent this.
+See [[Streamer Privacy]] for more information.
+
+
 ## Rebinding Controls
 You can rebind your controls by pressing `F1` in the game.
 
