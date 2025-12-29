@@ -39,4 +39,4 @@ This means you must be ***VERY CAREFUL*** with who and when is making changes to
 
 Either coordinate your modifications, or have a single member do all the RPG Maker work.
 
-But when you do run into those conflict, you can use [[RMXP Extractor]] to resolve them manually.
+But when you do run into those conflict, you can use [[RPG Tool]] to resolve them manually.

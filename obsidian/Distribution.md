@@ -10,10 +10,7 @@ Will prevent you from accidentally making unwanted changes in your development f
 ## Packing Scripts
 You should pack all your scripts into a single file when working with extracted scripts.
 
-For that, use the import feature from [[RMXP Extractor]].
-Delete the extracted JSON files first 
-
-**Once you're ready to release your mod**, you should pack the scripts up into a single file via [[RMXP Extractor]], instead of distributing the scripts as is.
+**Once you're ready to release your mod**, you should pack the scripts up into a single file via [[RPG Tool]], instead of distributing the scripts as is.
 
 
 ## Cleanup

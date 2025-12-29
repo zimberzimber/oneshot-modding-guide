@@ -39,7 +39,7 @@ You don't need to worry about packing your scripts with this method.
 ## Scripting the Right Way
 While more advanced, this setup is one and done, but requires some additional tools and packing the scripts for releases.
 
-Use the [[RMXP Extractor]] to extract the scripts, which will create the `scripts` folder with the extracted script files, and a `_scripts.txt` file.
+Use the [[RPG Tool]] to extract the scripts, which will create the `scripts` folder with the extracted script files, and a `_scripts.txt` file.
 
 Then set this as the only RPG Maker script via the editor:
 ```embed-ruby
