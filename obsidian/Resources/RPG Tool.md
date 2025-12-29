@@ -1,5 +1,5 @@
-RPG Maker saves its data in the Ruby marshal format, which is not very friendly to anything but Ruby, making it frustrating to work with beyond what the RPG Maker editor allows.
-[RPG Tool](https://github.com/melody-rs/rpgtool/releases) is a program designed to convert this marshal into plaintext formats like JSON and vice versa, opening a lot of options RPG Maker doesn't provide on its own.
+RPG Maker saves its data as [Ruby marshal](https://ruby-doc.org/core-2.6.8/Marshal.html), which is not very friendly to anything but Ruby, making it frustrating to work with beyond what the RPG Maker editor allows.
+[RPG Tool](https://github.com/melody-rs/rpgtool) is a program designed to convert this marshal into plaintext formats like JSON and vice versa, opening a lot of options RPG Maker doesn't provide on its own.
 
 The article will be using JSON for explanations, but you can use any other text format.
 
