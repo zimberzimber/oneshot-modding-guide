@@ -20,17 +20,23 @@
 </head>
 
 <body>
-<button id="theme-toggle" class="btn-primary" onclick="onThemeButtonClick()">
-    <img id="theme-icon"/>
-</button>
 
-<button id="hamburger-menu" class="btn-primary" onclick="showSidebar()">&#9776;</button>
+<div class="header">
+	<span class="header-side">
+		<button id="theme-toggle" class="btn-primary" onclick="onThemeButtonClick()"></button>
+		<a id="github-icon" class="btn-primary"></a>
+		<a id="discord-icon" class="btn-primary"></a>
+		<button id="hamburger-menu" class="btn-primary" onclick="showSidebar()">☰</button>
+	</span>
+	<span class="header-title">
+		<h1 id="page_title"></h1>
+	</span>
+</div>
+
 <div id="side-backdrop" onclick="hideSidebar()"></div>
 <div class="layout">
-    <aside id="navigation_tree" class="side"></aside>
-    <main id="page_content" class="content">
-        <h1 id="page_title"></h1>
-    </main>
+    <aside id="navigation_tree" class="side" onscroll="onNavtreeScroll(event)"></aside>
+    <main id="page_content" class="content"></main>
 </div>
 </body>
 

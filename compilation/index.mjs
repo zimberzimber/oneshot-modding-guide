@@ -1,14 +1,13 @@
 // --backlinkprefix=<prefix>
 // --localbacklinks : Configure backlinks for local browsing
 // --skipcontent : Skips converting page content
-// --embedassets : Embed article assets into the generated HTML
 // --dryrun : Skips writing to disk
 
 import fs from "fs"
 import path from "path"
 import { spawnSync } from "child_process"
-import filenamify from 'filenamify';
-import * as cheerio from 'cheerio';
+import filenamify from 'filenamify'
+import * as cheerio from 'cheerio'
 
 const element = (html) => cheerio.load(html, {}, false)("*")
 
@@ -17,20 +16,24 @@ const IGNORED_FILES = [".gitignore"]
 const CODE_COPY_BUTTON_HTML = element("<button class='copy-code-button' onclick='copyCodeBlock(event)'>Copy</button>")
 
 const resourceDir = `${import.meta.dirname}/resources`
+const styleFilename = "style.css"
 const RESOURCES_TO_COPY = [
     "favicon.ico",
     "icon_theme_dark.png",
     "icon_theme_light.png",
     "icon_theme_two.png",
-    "script.js",
-    "style.css"
+    "Discord-Symbol-Black.svg",
+    "Discord-Symbol-White.svg",
+    "github-mark.svg",
+    "github-mark-white.svg",
+    "script.js"
 ]
 
 const rootDir = path.join(import.meta.dirname, '..')
 const vaultDir = `${rootDir}/obsidian`
 const assetsDir = `${vaultDir}/Assets`
 
-const outputDir = path.resolve("./dist")
+const outputDir = path.resolve("./dist").replaceAll('\\', '/')
 if (fs.existsSync(outputDir))
     fs.rmSync(outputDir, { recursive: true })
 fs.mkdirSync(outputDir)
@@ -38,7 +41,6 @@ fs.mkdirSync(outputDir)
 const skipContent = process.argv.includes("--skipcontent")
 const dryRun = process.argv.includes("--dryrun")
 const localbackLinks = process.argv.includes("--localbacklinks")
-const embedAssets = process.argv.includes("--embedassets")
 
 const backlinkPrefixArg = process.argv.find(arg => arg.startsWith("--backlinkprefix="))
 if (!backlinkPrefixArg && !localbackLinks)
@@ -120,20 +122,17 @@ function getContent(path) {
         `--resource-path=${assetsDir}`,
         "--wrap=preserve",
         "--syntax-highlighting=none"
-    ];
-
-    if (embedAssets)
-        args.push("--embed-resources")
+    ]
 
     const proc = spawnSync("pandoc", args, {
         input: preprocessMarkdown(fs.readFileSync(path, "utf8")),
         encoding: "utf8",
         maxBuffer: 1024 * 1024 * 200
-    });
+    })
 
-    if (proc.error) throw proc.error;
+    if (proc.error) throw proc.error
     if (proc.status !== 0)
-        throw new Error(proc.stderr || "pandoc failed");
+        throw new Error(proc.stderr || "pandoc failed")
 
     return proc.stdout
 }
@@ -205,34 +204,43 @@ function buildNavigationTree(nodes, relativePath) {
     return ul
 }
 
+function getGitLink() {
+    return spawnSync("git", [ "config", "--get", "remote.origin.url" ], { encoding: "utf8" }).stdout.replace(/\.git\n*$/, '')
+}
+
+function getDiscordLink() {
+    return null
+}
+
 function buildHtmlTemplate(nodes) {
     const template = cheerio.load(fs.readFileSync(resourceDir + "/template.html", "utf8"))
     template("#navigation_tree").append(buildNavigationTree(nodes, backlinkPrefix))
 
-    if (embedAssets) {
-        template("#custom_script").text(fs.readFileSync(resourceDir + "/script.js", "utf8"))
-        template("#custom_style").remove()
-        template("head").append(`<style id="custom_style">${fs.readFileSync(resourceDir + "/style.css", "utf8")}</style>`)
+    template("#custom_script").attr("src", backlinkPrefix + "/script.js")
+    template("#custom_style").attr("href", backlinkPrefix + "/style.css")
 
-        template("#favicon").attr("href", imageToBase64Source(resourceDir + "/favicon.ico"))
-        template("#icon-theme-dark").attr("src", imageToBase64Source(resourceDir + "/icon_theme_dark.png"))
-        template("#icon-theme-light").attr("src", imageToBase64Source(resourceDir + "/icon_theme_light.png"))
-        template("#icon-theme-two").attr("src", imageToBase64Source(resourceDir + "/icon_theme_two.png"))
-    } else {
-        template("#custom_script").attr("src", backlinkPrefix + "/script.js")
-        template("#custom_style").attr("href", backlinkPrefix + "/style.css")
+    template("#favicon").attr("href", backlinkPrefix + "/favicon.ico")
+    template("#icon-theme-dark").attr("src", backlinkPrefix + "/icon_theme_dark.png")
+    template("#icon-theme-light").attr("src", backlinkPrefix + "/icon_theme_light.png")
+    template("#icon-theme-two").attr("src", backlinkPrefix + "/icon_theme_two.png")
 
-        template("#favicon").attr("href", backlinkPrefix + "/favicon.ico")
-        template("#icon-theme-dark").attr("src", backlinkPrefix + "/icon_theme_dark.png")
-        template("#icon-theme-light").attr("src", backlinkPrefix + "/icon_theme_light.png")
-        template("#icon-theme-two").attr("src", backlinkPrefix + "/icon_theme_two.png")
-    }
+    const gitLink = getGitLink()
+    if (gitLink)
+        template("#github-icon").attr("href", gitLink)
+    else
+        template("#github-icon").addClass("hidden")
+
+    const discordLink = getDiscordLink()
+    if (discordLink)
+        template("#discord-icon").attr("href", discordLink)
+    else
+        template("#discord-icon").addClass("hidden")
 
     return template
 }
 
-function imageToBase64Source(filePath) {
-    return "data:image/png;base64," + fs.readFileSync(filePath, { encoding: 'base64' })
+function buildCss() {
+    return fs.readFileSync(`${resourceDir}/${styleFilename}`, "utf8").replaceAll("#ROOT_PATH#", backlinkPrefix)
 }
 
 function processToPages(nodes, htmlTemplate, wikilinkDictinary) {
@@ -252,7 +260,7 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary) {
                 if (!href) {
                     // Might be referring to file instead
                     const elemHref = e.attr("href")
-                    if (fs.existsSync(path.join(assetsDir, elemHref))){
+                    if (fs.existsSync(path.join(assetsDir, elemHref))) {
                         href = `${backlinkPrefix}/_assets/${elemHref}`
                     } else {
                         throw new Error(`Href not found for: ${title}`)
@@ -262,12 +270,9 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary) {
                 e.attr("href", href)
             }
 
-            if (!embedAssets) {
-                const k = html("img.wikilink,video.wikilink")
-                for (const e of k) {
-                    const elem = html(e)
-                    elem.attr("src", `${backlinkPrefix}/_assets/${elem.attr("src")}`)
-                }
+            for (const e of html("img.wikilink,video.wikilink")) {
+                const elem = html(e)
+                elem.attr("src", `${backlinkPrefix}/_assets/${elem.attr("src")}`)
             }
 
             node.content = html.html()
@@ -297,13 +302,14 @@ const wikilinkDictinary = {}
 buildWikilinkDictionary(contentNodes, backlinkPrefix, wikilinkDictinary)
 const htmlTemplate = buildHtmlTemplate(contentNodes)
 processToPages(contentNodes, htmlTemplate, wikilinkDictinary)
+const style = buildCss()
 
 if (!dryRun) {
     outputNodes(contentNodes, outputDir)
 
-    if (!embedAssets) {
-        for (const resource of RESOURCES_TO_COPY)
-            fs.copyFileSync(`${resourceDir}/${resource}`, `${outputDir}/${resource}`)
-        fs.cpSync(assetsDir, `${outputDir}/_assets`, { recursive: true })
-    }
+    fs.writeFileSync(`${outputDir}/${styleFilename}`, style)
+    fs.cpSync(assetsDir, `${outputDir}/_assets`, { recursive: true })
+
+    for (const resource of RESOURCES_TO_COPY)
+        fs.copyFileSync(`${resourceDir}/${resource}`, `${outputDir}/${resource}`)
 }

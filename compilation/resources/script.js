@@ -58,9 +58,14 @@ function onThemeButtonClick() {
     toggleTheme()
 }
 
+function onNavtreeScroll(e) {
+    localStorage.setItem('navtree_scroll', e.srcElement.scrollTop)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    hljs.highlightAll();
+    hljs.highlightAll()
     loadTheme()
+    document.querySelector("#navigation_tree").scrollTop = localStorage.getItem('navtree_scroll') || 0
 })
 
 // Call immediately to prevent flashing

@@ -27,6 +27,12 @@
     /* Layout */
     --side-min-width: 240px;
     --side-max-width: 25%;
+	--side-padding: 0 0 0 1rem;
+
+	/* Icons */
+	--theme-icon: url("#ROOT_PATH#/icon_theme_dark.png");
+	--github-icon: url("#ROOT_PATH#/github-mark-white.svg");
+	--discord-icon: url("#ROOT_PATH#/Discord-Symbol-White.svg");
 }
 
 .light {
@@ -41,6 +47,11 @@
     --color-hover-link-bg: rgb(126 121 0 / 12%);
     --color-quote-bg: color-mix(in srgb, var(--color-side-bg) 33%, transparent);
     --side-box-shadow: 0 0 5px 5px rgb(213 193 233 / 60%);
+	
+	/* Icons */
+	--theme-icon: url("#ROOT_PATH#/icon_theme_light.png");
+	--github-icon: url("#ROOT_PATH#/github-mark.svg");
+	--discord-icon: url("#ROOT_PATH#/Discord-Symbol-Black.svg");
 }
 
 /*@font-face {*/
@@ -92,6 +103,7 @@ body {
     margin: 0;
     color: var(--color-text);
     overflow: hidden;
+	background: var(--color-content-bg);
 }
 
 p {
@@ -147,12 +159,12 @@ pre {
     padding: 2px 8px;
     font-size: 0.8em;
     cursor: pointer;
-    z-index: 1;
-    background: var(--color-content-bg);
+    z-index: 2;
     outline: none;
     border: 1px solid var(--color-link);
     color: var(--color-link);
     border-radius: 3px;
+    background-color: var(--color-side-bg);
 }
 
 code {
@@ -177,17 +189,23 @@ video {
     height: 100%;
 }
 
+.header {
+	width: 100%;
+    background: var(--color-side-bg);
+    z-index: 1;
+	position: relative;
+}
+
 /*Aside*/
 
 .side {
     font-size: 1rem;
-    padding: 0 0 0 1rem;
+	padding: var(--side-padding);
     min-width: var(--side-min-width);
     max-width: var(--side-max-width);
     background: var(--color-side-bg);
     overflow-y: auto;
     direction: rtl;
-    z-index: 1;
     box-shadow: var(--side-box-shadow);
 }
 
@@ -204,7 +222,7 @@ video {
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    background: var(--color-content-bg);
+	z-index: 1;
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -263,30 +281,23 @@ ul.navtree li a.navtree[selected="true"] {
 }
 
 .btn-primary {
-    position: absolute;
     background: var(--color-side-bg);
     color: var(--color-link);
     border: none;
     border-radius: 20%;
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.5rem;
+    font-size: 3rem;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: background 0.2s, color 0.2s;
-}
-
-#theme-toggle {
-    top: 1rem;
-    right: 1rem;
-    z-index: 1;
+	margin: 0 0.5rem 0 0;
+	padding: 0;
+    width: 3rem;
+    height: 3rem;
+	display: inline-block;
 }
 
 #hamburger-menu {
-    display: none;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1;
+	display: none;
 }
 
 #side-backdrop {
@@ -294,10 +305,38 @@ ul.navtree li a.navtree[selected="true"] {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.2);
+	z-index: 2;
+}
+
+
+#header,span {
+	display: inline-block;
+}
+
+
+#theme-toggle {
+    background-image: var(--theme-icon);
+    background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100% auto;
+}
+
+#github-icon {
+    background-image: var(--github-icon);
+    background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100% auto;
+}
+
+#discord-icon {
+    background-image: var(--discord-icon);
+    background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100% auto;
 }
 
 /*responsive settings*/
-@media (max-width: 600px) {
+@media (max-device-width: 600px) or (max-width: 600px) {
     .side {
         min-width: var(--side-min-width);
         max-width: 80vw;
@@ -307,11 +346,22 @@ ul.navtree li a.navtree[selected="true"] {
         left: 0;
         top: 0;
         height: 100%;
+		z-index: 5;
     }
 
     #hamburger-menu {
-        display: block;
+        display: inline-block;
     }
+}
+
+#header-title,h1 {
+	margin-top: 0;
+}
+
+.header-side {
+    min-width: var(--side-min-width);
+    max-width: var(--side-max-width);
+	padding: var(--side-padding);
 }
 
 .hidden {
