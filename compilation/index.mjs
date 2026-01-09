@@ -2,6 +2,7 @@
 // --localbacklinks : Configure backlinks for local browsing
 // --skipcontent : Skips converting page content
 // --dryrun : Skips writing to disk
+// --domain : The domain where the guide is hosted
 
 import fs from "fs"
 import path from "path"
@@ -57,6 +58,10 @@ if (localbackLinks) {
     backlinkPrefix = `/${backlinkPrefix}`
 }
 
+let domain = ""
+const domainArg = process.argv.find(arg => arg.startsWith("--domain="))
+if (domainArg) 
+    domain = domainArg.replace("--domain=", "")
 
 function gather(directory) {
     const collection = fs.readdirSync(directory, { withFileTypes: true }).reduce((res, e) => {
@@ -214,6 +219,9 @@ function getDiscordLink() {
 
 function buildHtmlTemplate(nodes) {
     const template = cheerio.load(fs.readFileSync(resourceDir + "/template.html", "utf8"))
+    
+    template("meta[property=og\\:url]").attr("content", domain)
+    
     template("#navigation_tree").append(buildNavigationTree(nodes, backlinkPrefix))
 
     template("#custom_script").attr("src", backlinkPrefix + "/script.js")
@@ -243,15 +251,21 @@ function buildCss() {
     return fs.readFileSync(`${resourceDir}/${styleFilename}`, "utf8").replaceAll("#ROOT_PATH#", backlinkPrefix)
 }
 
-function processToPages(nodes, htmlTemplate, wikilinkDictinary) {
+function processToPages(nodes, htmlTemplate, wikilinkDictinary, parent_path) {
     for (const node of nodes) {
+        const url_path = `${parent_path}/${node.path_part}`
+
         if (node.content) {
             const html = cheerio.load(htmlTemplate.html())
             html("title").text(node.title)
+            html("meta[property=og\\:title]").attr("content", node.title)
             html("#page_title").text(node.title)
             html(`a.navtree[nav-title='${node.title.replaceAll(/'/g, "\\'")}']`).attr("selected", true)
             html("#page_content").append(node.content)
             html("pre").prepend(CODE_COPY_BUTTON_HTML)
+
+            const url = html("meta[property=og\\:url]").attr("content")
+            html("meta[property=og\\:url]").attr("content", `${url}${backlinkPrefix}${url_path}.html`)
 
             for (let e of html("a.wikilink")) {
                 e = html(e)
@@ -279,7 +293,7 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary) {
         }
 
         if (node.children)
-            processToPages(node.children, htmlTemplate, wikilinkDictinary)
+            processToPages(node.children, htmlTemplate, wikilinkDictinary, url_path)
     }
 }
 
@@ -301,7 +315,7 @@ const contentNodes = gather(vaultDir)
 const wikilinkDictinary = {}
 buildWikilinkDictionary(contentNodes, backlinkPrefix, wikilinkDictinary)
 const htmlTemplate = buildHtmlTemplate(contentNodes)
-processToPages(contentNodes, htmlTemplate, wikilinkDictinary)
+processToPages(contentNodes, htmlTemplate, wikilinkDictinary, '')
 const style = buildCss()
 
 if (!dryRun) {

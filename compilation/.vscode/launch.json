@@ -4,11 +4,22 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Compilation Dry Run",
+            "name": "Compile dry run",
             "program": "${workspaceFolder}/index.mjs",
             "args": [
-                "--localbacklinks",
-                "--dryrun"
+                "--dryrun",
+                "--localbacklinks"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Compile Github dry run",
+            "program": "${workspaceFolder}/index.mjs",
+            "args": [
+                "--dryrun",
+                "--backlinkprefix=oneshot-modding-guide",
+                "--domain=https://zimberzimber.github.io"
             ]
         }
     ]

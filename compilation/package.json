@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "compile-github-pages": "node ./index.mjs --backlinkprefix=oneshot-modding-guide",
+    "compile-github-pages": "node ./index.mjs --backlinkprefix=oneshot-modding-guide --domain=https://zimberzimber.github.io",
     "compile-local": "node ./index.mjs --localbacklinks"
   },
   "dependencies": {
