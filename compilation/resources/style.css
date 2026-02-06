@@ -55,7 +55,6 @@
 }
 
 .two {
-    --theme-icon: url("file://D:/git repositories/OneShot Modding Guide/compilation/dist/icon_theme_two.png");
     --color-text: #F55;
     --color-heading: #F55;
     --color-link: #FFCC00;
@@ -67,6 +66,11 @@
     --color-hover-link-bg: rgba(221, 95, 13, 0.33);
     --color-quote-bg: #200200;
     --side-box-shadow: 0 0 5px 5px rgb(32 2 0 / 60%);
+    
+    /* Icons */
+    --theme-icon: url("#ROOT_PATH#/icon_theme_two.png");
+    --github-icon: url("#ROOT_PATH#/github-mark-white.svg");
+    --discord-icon: url("#ROOT_PATH#/Discord-Symbol-White.svg");
 }
 
 hr {
