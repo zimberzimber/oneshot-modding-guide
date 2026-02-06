@@ -215,7 +215,15 @@ function getGitLink() {
 }
 
 function getDiscordLink() {
-    return null
+    const discordLinkArg = process.argv.find(arg => arg.startsWith("--discordlink="))
+    if (!discordLinkArg)
+        return null
+
+    const discordLink = discordLinkArg.replace("--discordlink=", "").trim()
+    if (!discordLink)
+        return null
+    
+    return discordLink
 }
 
 function buildHtmlTemplate(nodes) {
