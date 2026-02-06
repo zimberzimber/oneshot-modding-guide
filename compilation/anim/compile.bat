@@ -1,0 +1,3 @@
+ffmpeg -f concat -safe 0 -i frames.txt -c:v libwebp_anim -pix_fmt bgra -lossless 1 -loop 1 -fps_mode passthrough two.webp -y
+ffmpeg -f concat -safe 0 -i frames.txt -c:v libx264 -fps_mode passthrough -preset slow -crf 17 -pix_fmt yuv420p -profile:v high -level 4.1 -movflags +faststart two.mp4 -y
+ffmpeg -f concat -safe 0 -i frames.txt -c:v libvpx-vp9 -pix_fmt yuva420p -lossless 1 -fps_mode passthrough -row-mt 1 -deadline best -cpu-used 0 two.webm -y

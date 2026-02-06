@@ -27,7 +27,8 @@ const RESOURCES_TO_COPY = [
     "Discord-Symbol-White.svg",
     "github-mark.svg",
     "github-mark-white.svg",
-    "script.js"
+    "script.js",
+    "two.webm"
 ]
 
 const rootDir = path.join(import.meta.dirname, '..')
@@ -228,9 +229,6 @@ function buildHtmlTemplate(nodes) {
     template("#custom_style").attr("href", backlinkPrefix + "/style.css")
 
     template("#favicon").attr("href", backlinkPrefix + "/favicon.ico")
-    template("#icon-theme-dark").attr("src", backlinkPrefix + "/icon_theme_dark.png")
-    template("#icon-theme-light").attr("src", backlinkPrefix + "/icon_theme_light.png")
-    template("#icon-theme-two").attr("src", backlinkPrefix + "/icon_theme_two.png")
 
     const gitLink = getGitLink()
     if (gitLink)

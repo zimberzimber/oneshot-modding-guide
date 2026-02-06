@@ -1,5 +1,7 @@
 const SIDEBAR_ELEMENT = 'scrollTarget';
 
+let themeSwaps = 0
+
 function copyCodeBlock(caller) {
     const content = caller.target.parentNode.querySelector("code").innerText.replace(/\u00a0/g, " ");
     navigator.clipboard.writeText(content).then(() => {
@@ -8,7 +10,23 @@ function copyCodeBlock(caller) {
 }
 
 function toggleTheme() {
-    getTheme() == 'dark' ? setTheme('light') : setTheme('dark')
+    if (isThemeTwoLocked())
+        return
+
+    themeSwaps += 1
+    switch (getTheme()) {
+        case 'light':
+            if (!isTwoUnlocked() && themeSwaps > 20)
+                return setTheme('two')
+            else
+                return setTheme('dark')
+        case 'dark':
+            return isTwoUnlocked() ? setTheme('two') : setTheme('light')
+        case 'two':
+            return setTheme('light')
+        default:
+            throw new Error("how")
+    }
 }
 
 function getTheme() {
@@ -18,20 +36,71 @@ function getTheme() {
 function setTheme(theme) {
     localStorage.setItem('theme', theme);
 
-    let source_icon = null
-    if (theme == 'light') {
-        document.body.classList.add('light')
-        source_icon = document.getElementById('icon-theme-light')
-    } else {
-        document.body.classList.remove('light')
-        source_icon = document.getElementById('icon-theme-dark')
+    document.documentElement.classList.remove('light', 'two')
+
+    switch (theme) {
+        case 'light':
+            document.documentElement.classList.add('light')
+            break
+        case 'dark':
+            break
+        case 'two':
+            document.documentElement.classList.add('two')
+            break
+        default:
+            throw new Error("how")
     }
 
-    if (source_icon) {
-        const icon = document.getElementById('theme-icon')
-        if (icon)
-            icon.src = source_icon.src
+    if (theme == 'two' && !isTwoUnlocked()) {
+        setTwoState(1)
+        setTimeout(playTwoAnimation, 0)
     }
+}
+
+function playTwoAnimation() {
+    const src = document.createElement('source')
+    src.setAttribute('type', "video/webm")
+    src.setAttribute('src', "/oneshot-modding-guide/two.webm") // Lazy
+
+    const video = document.createElement("video")
+    video.id = 'ee'
+    video.setAttribute('autoplay', true)
+    video.setAttribute('muted', true)
+    video.setAttribute('playsinline', true)
+
+    video.appendChild(src)
+
+    video.onpause = () => { video.play() }
+
+    video.onended = () => {
+        setTwoState(2)
+        video.remove()
+    }
+
+    video.onerror = (e) => {
+        setTwoState(2)
+        video.remove()
+        console.error("Failed playing TWO")
+        throw new Error(e)
+    }
+
+    document.body.appendChild(video)
+}
+
+function isTwoUnlocked() {
+    return getTwoState() > 0
+}
+
+function isThemeTwoLocked() {
+    return getTwoState() == 1
+}
+
+function getTwoState() {
+    return localStorage.getItem('twoState') || 0
+}
+
+function setTwoState(state) {
+    localStorage.setItem('twoState', state)
 }
 
 function showSidebar() {
@@ -50,10 +119,6 @@ function hideSidebar() {
     backdrop.style.display = 'none';
 }
 
-function loadTheme() {
-    setTheme(getTheme())
-}
-
 function onThemeButtonClick() {
     toggleTheme()
 }
@@ -64,9 +129,7 @@ function onNavtreeScroll(e) {
 
 document.addEventListener('DOMContentLoaded', () => {
     hljs.highlightAll()
-    loadTheme()
     document.querySelector("#navigation_tree").scrollTop = localStorage.getItem('navtree_scroll') || 0
 })
 
-// Call immediately to prevent flashing
-loadTheme()
+setTheme(getTheme())

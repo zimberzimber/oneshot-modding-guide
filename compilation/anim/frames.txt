@@ -1,0 +1,71 @@
+file 0.png
+duration 0.1
+
+file 1.png
+duration 0.1
+
+file 2.png
+duration 0.1
+
+file 3.png
+duration 0.1
+
+file 4.png
+duration 0.6
+
+file 5.png
+duration 0.1
+
+file 6.png
+duration 0.5
+
+file 7.png
+duration 0.1
+
+file 8.png
+duration 0.5
+
+file 9.png
+duration 0.1
+
+file 10.png
+duration 0.1
+
+file 11.png
+duration 0.5
+
+file 12.png
+duration 0.1
+
+file 13.png
+duration 0.2
+
+file 14.png
+duration 0.1
+
+file 15.png
+duration 0.1
+
+file 16.png
+duration 0.6
+
+file 17.png
+duration 0.1
+
+file 18.png
+duration 0.1
+
+file 19.png
+duration 0.6
+
+file 20.png
+duration 0.1
+
+file 21.png
+duration 0.1
+
+file 22.png
+duration 0.1
+
+file 23.png
+duration 0.1

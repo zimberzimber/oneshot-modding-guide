@@ -27,12 +27,12 @@
     /* Layout */
     --side-min-width: 240px;
     --side-max-width: 25%;
-	--side-padding: 0 0 0 1rem;
+    --side-padding: 0 0 0 1rem;
 
-	/* Icons */
-	--theme-icon: url("#ROOT_PATH#/icon_theme_dark.png");
-	--github-icon: url("#ROOT_PATH#/github-mark-white.svg");
-	--discord-icon: url("#ROOT_PATH#/Discord-Symbol-White.svg");
+    /* Icons */
+    --theme-icon: url("#ROOT_PATH#/icon_theme_dark.png");
+    --github-icon: url("#ROOT_PATH#/github-mark-white.svg");
+    --discord-icon: url("#ROOT_PATH#/Discord-Symbol-White.svg");
 }
 
 .light {
@@ -44,20 +44,36 @@
     --color-side-bg: #efe1ff;
     --color-content-bg: #F8F6FF;
     --color-hover-link: color-mix(in srgb, var(--color-link) 40%, #3a1c63);
-    --color-hover-link-bg: rgb(126 121 0 / 12%);
+    --color-hover-link-bg: rgba(126, 67, 0, 0.12);
     --color-quote-bg: color-mix(in srgb, var(--color-side-bg) 33%, transparent);
     --side-box-shadow: 0 0 5px 5px rgb(213 193 233 / 60%);
-	
-	/* Icons */
-	--theme-icon: url("#ROOT_PATH#/icon_theme_light.png");
-	--github-icon: url("#ROOT_PATH#/github-mark.svg");
-	--discord-icon: url("#ROOT_PATH#/Discord-Symbol-Black.svg");
+
+    /* Icons */
+    --theme-icon: url("#ROOT_PATH#/icon_theme_light.png");
+    --github-icon: url("#ROOT_PATH#/github-mark.svg");
+    --discord-icon: url("#ROOT_PATH#/Discord-Symbol-Black.svg");
 }
 
-/*@font-face {*/
-/*    font-family: 'Terminus TTF';*/
-/*    src: url('TerminusTTF.ttf') format('truetype');*/
-/*}*/
+.two {
+    --theme-icon: url("file://D:/git repositories/OneShot Modding Guide/compilation/dist/icon_theme_two.png");
+    --color-text: #F55;
+    --color-heading: #F55;
+    --color-link: #FFCC00;
+    --color-link-active: #FFCC00;
+    --color-code-bg: #200200;
+    --color-side-bg: #200200;
+    --color-content-bg: #000;
+    --color-hover-link: #FFF;
+    --color-hover-link-bg: rgba(221, 95, 13, 0.33);
+    --color-quote-bg: #200200;
+    --side-box-shadow: 0 0 5px 5px rgb(32 2 0 / 60%);
+}
+
+hr {
+    height: 2px;
+    border: none;
+    background-color: var(--color-heading);
+}
 
 ::-webkit-scrollbar {
     width: 8px;
@@ -72,7 +88,7 @@
 *::-webkit-scrollbar-thumb {
     background: color-mix(in srgb, var(--color-link), transparent 50%);
     border-radius: 8px;
-    border: 2px solid transparent; /* creates padding effect */
+    border: 2px solid transparent;
     background-clip: content-box;
 }
 
@@ -103,7 +119,7 @@ body {
     margin: 0;
     color: var(--color-text);
     overflow: hidden;
-	background: var(--color-content-bg);
+    background: var(--color-content-bg);
 }
 
 p {
@@ -112,7 +128,12 @@ p {
     font-size: var(--font-p);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--color-heading);
     margin-bottom: 0;
 }
@@ -190,17 +211,17 @@ video {
 }
 
 .header {
-	width: 100%;
+    width: 100%;
     background: var(--color-side-bg);
     z-index: 1;
-	position: relative;
+    position: relative;
 }
 
 /*Aside*/
 
 .side {
     font-size: 1rem;
-	padding: var(--side-padding);
+    padding: var(--side-padding);
     min-width: var(--side-min-width);
     max-width: var(--side-max-width);
     background: var(--color-side-bg);
@@ -222,7 +243,7 @@ video {
     width: 100%;
     height: 95%;
     overflow-y: auto;
-	z-index: 1;
+    z-index: 1;
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -257,7 +278,7 @@ main.content li {
     font-size: var(--font-p);
 }
 
-.navtree.parent > a::before {
+.navtree.parent>a::before {
     content: "▼";
     display: inline-block;
     margin-left: -1.5em;
@@ -289,15 +310,15 @@ ul.navtree li a.navtree[selected="true"] {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: background 0.2s, color 0.2s;
-	margin: 0 0.5rem 0 0;
-	padding: 0;
+    margin: 0 0.5rem 0 0;
+    padding: 0;
     width: 3rem;
     height: 3rem;
-	display: inline-block;
+    display: inline-block;
 }
 
 #hamburger-menu {
-	display: none;
+    display: none;
 }
 
 #side-backdrop {
@@ -305,37 +326,45 @@ ul.navtree li a.navtree[selected="true"] {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.2);
-	z-index: 2;
+    z-index: 2;
 }
 
 
-#header,span {
-	display: inline-block;
+#header,
+span {
+    display: inline-block;
 }
 
+#ee {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    max-height: 100%;
+    pointer-events: none;
+}
 
 #theme-toggle {
     background-image: var(--theme-icon);
     background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100% auto;
+    background-position: center;
+    background-size: 100% auto;
 }
 
 #github-icon {
     background-image: var(--github-icon);
     background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100% auto;
+    background-position: center;
+    background-size: 100% auto;
 }
 
 #discord-icon {
     background-image: var(--discord-icon);
     background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100% auto;
+    background-position: center;
+    background-size: 100% auto;
 }
 
-/*responsive settings*/
 @media (max-device-width: 600px) or (max-width: 600px) {
     .side {
         min-width: var(--side-min-width);
@@ -346,7 +375,7 @@ ul.navtree li a.navtree[selected="true"] {
         left: 0;
         top: 0;
         height: 100%;
-		z-index: 5;
+        z-index: 5;
     }
 
     #hamburger-menu {
@@ -354,14 +383,15 @@ ul.navtree li a.navtree[selected="true"] {
     }
 }
 
-#header-title,h1 {
-	margin-top: 0;
+#header-title,
+h1 {
+    margin-top: 0;
 }
 
 .header-side {
     min-width: var(--side-min-width);
     max-width: var(--side-max-width);
-	padding: var(--side-padding);
+    padding: var(--side-padding);
 }
 
 .hidden {
