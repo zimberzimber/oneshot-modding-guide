@@ -7,18 +7,32 @@
     <title></title>
     <link id="favicon" rel="shortcut icon" type="image/x-icon">
 
+    <!-- Global tags -->
+    <meta property="og:site_name" content="OneShot Modding Guide">
+    <meta name="twitter:site" content="OneShot Modding Guide">
+
+    <meta property="og:description" content="A guide for messing with World Machines">
+    <meta name="twitter:description" content="A guide for messing with World Machines">
+
+    <meta property="og:image:url" content="placeholder">
+    <meta property="og:image:secure_url" content="placeholder">
+    <meta property="og:image:type" content="image/png">
+    <meta property="twitter:image" content="placeholder">
+
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <meta property="theme-color" content="#291048">
-    <meta property="og:site_name" content="OneShot Modding Guide" />
-    <meta property="og:title" content="placeholder" />
-    <meta property="og:description" content="A guide for messing with World Machines" />
-    <meta property="og:url" content="placeholder" />
-    <meta property="og:image:url" content="placeholder" />
-    <meta property="og:image:secure_url" content="placeholder" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:type" content="website" />
+
+    <!-- Page specific tags -->
+    <meta property="og:title" content="placeholder">
+    <meta name="twitter:title" content="placeholder">
+
+    <meta property="og:url" content="placeholder">
+    <meta name="twitter:url" content="placeholder">
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/base16/atelier-sulphurpool.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
     <script id="custom_script"></script>
@@ -27,23 +41,23 @@
 
 <body>
 
-<div class="header">
-	<span class="header-side">
-		<button id="theme-toggle" class="btn-primary" onclick="onThemeButtonClick()"></button>
-		<a id="github-icon" class="btn-primary"></a>
-		<a id="discord-icon" class="btn-primary"></a>
-		<button id="hamburger-menu" class="btn-primary" onclick="showSidebar()">☰</button>
-	</span>
-	<span class="header-title">
-		<h1 id="page_title"></h1>
-	</span>
-</div>
+    <div class="header">
+        <span class="header-side">
+            <button id="theme-toggle" class="btn-primary" onclick="onThemeButtonClick()"></button>
+            <a id="github-icon" class="btn-primary"></a>
+            <a id="discord-icon" class="btn-primary"></a>
+            <button id="hamburger-menu" class="btn-primary" onclick="showSidebar()">☰</button>
+        </span>
+        <span class="header-title">
+            <h1 id="page_title"></h1>
+        </span>
+    </div>
 
-<div id="side-backdrop" onclick="hideSidebar()"></div>
-<div class="layout">
-    <aside id="navigation_tree" class="side" onscroll="onNavtreeScroll(event)"></aside>
-    <main id="page_content" class="content"></main>
-</div>
+    <div id="side-backdrop" onclick="hideSidebar()"></div>
+    <div class="layout">
+        <aside id="navigation_tree" class="side" onscroll="onNavtreeScroll(event)"></aside>
+        <main id="page_content" class="content"></main>
+    </div>
 </body>
 
 </html>

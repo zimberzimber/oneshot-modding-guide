@@ -237,6 +237,7 @@ function buildHtmlTemplate(nodes) {
 
     template("meta[property=og\\:image\\:url]").attr("content", `${httpDomain}${backlinkPrefix}/banner.png`)
     template("meta[property=og\\:image\\:secure_url]").attr("content", `${httpsDomain}${backlinkPrefix}/banner.png`)
+    template("meta[property=twitter\\:image]").attr("content", `${domain}${backlinkPrefix}/banner.png`)
     
     template("#navigation_tree").append(buildNavigationTree(nodes, backlinkPrefix))
 
@@ -271,7 +272,10 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary, parent_path) {
         if (node.content) {
             const html = cheerio.load(htmlTemplate.html())
             html("title").text(node.title)
+
             html("meta[property=og\\:title]").attr("content", node.title)
+            html("meta[name=twitter\\:title]").attr("content", node.title)
+
             html("#page_title").text(node.title)
             html(`a.navtree[nav-title='${node.title.replaceAll(/'/g, "\\'")}']`).attr("selected", true)
             html("#page_content").append(node.content)
@@ -279,6 +283,7 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary, parent_path) {
 
             const url = html("meta[property=og\\:url]").attr("content")
             html("meta[property=og\\:url]").attr("content", `${url}${backlinkPrefix}${url_path}.html`)
+            html("meta[name=twitter\\:url]").attr("content", `${url}${backlinkPrefix}${url_path}.html`)
 
             for (let e of html("a.wikilink")) {
                 e = html(e)
