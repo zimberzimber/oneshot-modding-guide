@@ -279,6 +279,14 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary, parent_path) {
             html("#page_title").text(node.title)
             html(`a.navtree[nav-title='${node.title.replaceAll(/'/g, "\\'")}']`).attr("selected", true)
             html("#page_content").append(node.content)
+
+            let description = html("#page_content").text()
+            if (description.length > 180)
+                description = description.slice(0, 180).trim() + '...'
+
+            html("meta[property=og\\:description]").attr("content", description)
+            html("meta[name=twitter\\:description]").attr("content", description)
+
             html("pre").prepend(CODE_COPY_BUTTON_HTML)
 
             const url = html("meta[property=og\\:url]").attr("content")
