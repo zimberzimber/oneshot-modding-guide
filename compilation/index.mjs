@@ -28,7 +28,8 @@ const RESOURCES_TO_COPY = [
     "github-mark.svg",
     "github-mark-white.svg",
     "script.js",
-    "two.webm"
+    "two.webm",
+    "banner.png"
 ]
 
 const rootDir = path.join(import.meta.dirname, '..')
