@@ -4,6 +4,19 @@ This is not an RPG Maker guide, a scripting guide, nor a general game developmen
 This guide covers information specific to OneShot, sometimes touching upon related topics, or link to external resources.
 Despite that, what you learn here may serve you with other games as well.
 
+The guide is written in [Obsidian.md](https://obsidian.md/), compiled with [Pandoc](https://pandoc.org/) and custom scripts, and hosted on Github pages for availability.
+If you prefer, you can download the vault from the Github repository for local browsing with Obsidian.
+
+
+## Guide Assumptions
+The guide assumes you have some RPG Maker knowledge, although you can learn it as you mod.
+Some things can be done even without the editor, like translation or asset swaps.
+
+The guide assumes you're using the Windows operating system.
+
+The guide assumes you can see file extensions, like the `.exe` in `oneshot.exe`.
+Look up how to enable them if they're not visible.
+
 
 ## Lost or Uncertain?
 **Look for answers in vanilla first.**
@@ -22,16 +35,6 @@ Metamorphosis and Frostide were somewhat made with that in mind.
 Fading Memory less so, and someone may not be too happy about you digging through it.
 
 
-## Guide Assumptions
-The guide assumes you have some RPG Maker knowledge, although you can learn it as you mod.
-Some things can be done even without the editor, like translation or asset swaps.
-
-The guide assumes you're using the Windows operating system.
-
-The guide assumes you can see file extensions, like the `.exe` in `oneshot.exe`.
-Look up how to enable them if they're not visible.
-
-
 ## Source and Contribution
 The source for this guide is available [on GitHub](https://github.com/zimberzimber/oneshot-modding-guide/).
-If you'd like to contribute, feel free to make a pull request from your fork.
+If you'd like to contribute, feel free to contact me on Discord, or better yet, make a pull request with your changes.
