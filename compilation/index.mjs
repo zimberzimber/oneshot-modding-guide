@@ -231,7 +231,12 @@ function buildHtmlTemplate(nodes) {
     const template = cheerio.load(fs.readFileSync(resourceDir + "/template.html", "utf8"))
     
     template("meta[property=og\\:url]").attr("content", domain)
-    template("meta[property=og\\:image]").attr("content", `${domain}${backlinkPrefix}/banner.png`)
+
+    const httpDomain = domain.replace(/^https/, 'http')
+    const httpsDomain = domain.replace(/^http[^s]/, 'https')
+
+    template("meta[property=og\\:image\\:url]").attr("content", `${httpDomain}${backlinkPrefix}/banner.png`)
+    template("meta[property=og\\:image\\:secure_url]").attr("content", `${httpsDomain}${backlinkPrefix}/banner.png`)
     
     template("#navigation_tree").append(buildNavigationTree(nodes, backlinkPrefix))
 
