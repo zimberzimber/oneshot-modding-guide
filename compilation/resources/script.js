@@ -51,7 +51,7 @@ function setTheme(theme) {
             throw new Error("how")
     }
 
-    if (theme == 'two' && !isTwoUnlocked()) {
+    if (theme == 'two' && (!isTwoUnlocked() || isThemeTwoLocked())) {
         setTwoState(1)
         setTimeout(playTwoAnimation, 0)
     }
