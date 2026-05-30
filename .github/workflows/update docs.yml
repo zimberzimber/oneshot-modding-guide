@@ -24,8 +24,8 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
-        working-directory: compilation
         with:
+          version: ^11.5.0
           cache: true
 
       - name: Install Node dependencies
