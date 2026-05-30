@@ -24,6 +24,7 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
+        working-directory: compilation
         with:
           cache: true
 
