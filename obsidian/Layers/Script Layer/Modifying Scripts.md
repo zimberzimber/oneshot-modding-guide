@@ -14,11 +14,11 @@ You can use this method if you don't intend to delve into scripting too often, l
 
 Initially, you will not see the scripts in RPG Maker's script editor.
 Here's what you must do:
+- Close the editor if it's open
 - Go to the `Data` folder
 - Delete `Scripts.rxdata`
 - Make a copy of `xScripts.rxdata`
 - Rename the copy to `Scripts.rxdata`
-- Close the editor if it was open
 
 Next time you open the script editor, you'll see all the scripts.
 
@@ -41,15 +41,17 @@ While more advanced, this setup is one and done, but requires some additional to
 
 Use the [[RPG Tool]] to extract the scripts, which will create the `scripts` folder with the extracted script files, and a `_scripts.txt` file.
 
-Then set this as the only RPG Maker script via the editor:
+Then **inside the RPG Maker  script editor**, create a single script named `main`, and paste this into it:
 ```embed-ruby
 {
 	"PATH": "vault://Assets/main_override.rb",
 	"TITLE": "Main"
 }
 ```
+After that, delete `xScripts.rxdata`, make a copy of `Scripts.rxdata`, and rename the copy to `xScripts.rxdata`.
 
-This will read the `_scripts.txt` file to determine which files are to load from the `scripts` folder, and in what order.
+The game should launch as if nothing changed, but behind the scenes it loads the scripts from the `scripts` folder created earlier.
+Scripts are loaded and their order is determined based on the `_scripts.txt` file within the `scripts` folder.
 
 Now you can read, modify, and create new scripts with your favorite text editing program, instead of being forced to suffer RPG Maker's awful script editor.
 Just make sure you save your changes and relaunch the game for them to take effect.
