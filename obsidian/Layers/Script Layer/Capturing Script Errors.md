@@ -21,8 +21,10 @@ rescue NoMemoryError, ScriptError, StandardError => error
 end
 ```
 
-For some unfathomable reason, the `print` function displays a blank dialogue box instead of indicating there's an issue.
-The simplest solution is using a rudimentary length check, and writing the error to a file:
+It's a good idea to write the error to a file, so that it can be easily read, and makes it easier for players to forward the error to the developer.
+In addition to that, the `print` function displays a blank dialogue box instead of indicating there's an issue for some unfathomable reason, so writing to a file deals with that as well.
+
+This will always write the error to the `error.log` file, which can be opened with any text editor (like notepad), and let the user know if the error was too long to display:
 ```ruby
 begin
   # ...
