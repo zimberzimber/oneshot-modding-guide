@@ -3,6 +3,7 @@
     "compile-github-pages": "node ./index.mjs --backlinkprefix=oneshot-modding-guide --domain=https://zimberzimber.github.io --discordlink=https://discord.gg/HcbBcmkJz9",
     "compile-local": "node ./index.mjs --localbacklinks --discordlink=placeholder"
   },
+  "packageManager": "^pnpm@11.5.0",
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
