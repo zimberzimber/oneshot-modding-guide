@@ -49,7 +49,14 @@ end
 ```
 
 
-Full modified vanilla `main` example:
+## IMPORTANT
+**Errors may potentially contain personally identifiable information!**
+Example case: the game failed reading a file that doesn't exist in the save directory on Windows, which has the username in the path, which may be the user's full name. 
+
+It is your responsibility as the mod maker to handle it appropriately.
+
+
+## Full Modified Vanilla `main` Example:
 ```ruby
 #==============================================================================
 # ** Main
