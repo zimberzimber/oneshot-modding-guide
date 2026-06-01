@@ -2,13 +2,14 @@
 # Used primarily to set the save directory for your mod.
 MOD_NAME = "CHANGE_ME"
 
-# Make changes past this point at your own risk
+# DO NOT MAKE CHANGES PAST THIS POINT.
+# Or do, at your own risk.
 # --------------------------------------------------
 
 # Ensure the modder actually changed the name
-if MOD_NAME == "CHANGE_ME"
+if MOD_NAME == "CHANGE_ME" # I repeat: DO NOT CHANGE.
     print("You did not set the mod's name.")
-    print("See the 'Patch_Init' script for details.")
+    print("See the 'Save_Override' script for details.")
     exit()
 end
 

@@ -23,5 +23,5 @@ Copy this code into it:
 ```
 
 
-Then inside the script, change `CHANGE_ME` to your mod's name.
+Then inside the script, change *just the first* `CHANGE_ME` to your mod's name, *and nothing else.*
 To avoid any potential issues, use only numbers, underscores, and lower case English characters.
