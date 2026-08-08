@@ -44,7 +44,7 @@ Throw it in a database, put it through an ETL pipeline, apply some machine learn
 
 ## Setup
 1) Go to your mod's folder
-2) [Download the release for your version](https://github.com/melody-rs/rpgtool/releases/tag/0.2.0) into it
+2) [Download the release for your OS](https://github.com/melody-rs/rpgtool/releases) into it
 3) Create a file named `rmxp_export.bat`, and add this line to it:
 ```powershell
 rpgtool.exe structured --format marshal json ./Data ./Data_JSON rpgxp
