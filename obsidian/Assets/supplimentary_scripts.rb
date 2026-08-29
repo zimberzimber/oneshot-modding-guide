@@ -101,7 +101,7 @@ module RPG
 	end
 end
 
-# Simplify entering proper debug mdoe
+# Simplify entering proper debug mode
 $debug = File.exists?("debug_tester.dat") unless $debug
 
 # Debug specific stuff past this point
