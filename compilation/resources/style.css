@@ -153,6 +153,7 @@ h1 {
 
 h2 {
     font-size: var(--font-h2);
+    position: relative;
 }
 
 h3 {
@@ -195,6 +196,12 @@ pre {
     color: var(--color-link);
     border-radius: 3px;
     background-color: var(--color-side-bg);
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.copy-code-button.copied {
+    background-color: var(--color-link);
+    color: var(--color-side-bg);
 }
 
 code {
@@ -202,6 +209,40 @@ code {
     padding: 0 4px;
     margin: 0 -4px;
     max-height: 20rem;
+}
+
+.header-link-button {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0 0.3rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    vertical-align: middle;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--color-link);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+h2:hover .header-link-button,
+.header-link-button:focus-visible {
+    opacity: 1;
+}
+
+@keyframes header-highlight {
+    0%, 40% {
+        background: var(--color-hover-link-bg);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+h2.highlight-target {
+    animation: header-highlight 1.6s ease-out;
 }
 
 img,

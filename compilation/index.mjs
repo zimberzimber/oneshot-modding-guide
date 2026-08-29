@@ -14,7 +14,8 @@ const element = (html) => cheerio.load(html, {}, false)("*")
 
 const IGNORED_DIRS = [".obsidian", "Assets"]
 const IGNORED_FILES = [".gitignore"]
-const CODE_COPY_BUTTON_HTML = element("<button class='copy-code-button' onclick='copyCodeBlock(event)'>Copy</button>")
+const CODE_COPY_BUTTON_HTML = element("<button class='copy-code-button' onclick='copyCodeBlock(event)' title='Copy contents'>Copy</button>")
+const HEADER_LINK_BUTTON_HTML = element("<button class='header-link-button' onclick='copyHeaderLink(event)' title='Copy link to this section'>🔗</button>")
 
 const resourceDir = `${import.meta.dirname}/resources`
 const styleFilename = "style.css"
@@ -288,6 +289,7 @@ function processToPages(nodes, htmlTemplate, wikilinkDictinary, parent_path) {
             html("meta[name=twitter\\:description]").attr("content", description)
 
             html("pre").prepend(CODE_COPY_BUTTON_HTML)
+            html("h2").append(HEADER_LINK_BUTTON_HTML)
 
             const url = html("meta[property=og\\:url]").attr("content")
             html("meta[property=og\\:url]").attr("content", `${url}${backlinkPrefix}${url_path}.html`)

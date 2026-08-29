@@ -3,9 +3,31 @@ const SIDEBAR_ELEMENT = 'scrollTarget';
 let themeSwaps = 0
 
 function copyCodeBlock(caller) {
-    const content = caller.target.parentNode.querySelector("code").innerText.replace(/\u00a0/g, " ");
+    const button = caller.target
+    const content = button.parentNode.querySelector("code").innerText.replace(/\u00a0/g, " ");
     navigator.clipboard.writeText(content).then(() => {
-        console.log('Copied!');
+        button.classList.add('copied')
+        button.disabled = true
+        setTimeout(() => {
+            button.classList.remove('copied')
+            button.disabled = false
+        }, 1000)
+    })
+}
+
+function copyHeaderLink(caller) {
+    const button = caller.target
+    const heading = button.parentNode
+    const url = `${location.origin}${location.pathname}#${heading.id}`
+
+    navigator.clipboard.writeText(url).then(() => {
+        const original = button.textContent
+        button.textContent = '\u2705'
+        button.disabled = true
+        setTimeout(() => {
+            button.textContent = original
+            button.disabled = false
+        }, 1000)
     })
 }
 
@@ -127,9 +149,27 @@ function onNavtreeScroll(e) {
     localStorage.setItem('navtree_scroll', e.srcElement.scrollTop)
 }
 
+function highlightFragmentTarget() {
+    if (!location.hash)
+        return
+
+    const target = document.getElementById(location.hash.slice(1))
+    if (!target)
+        return
+
+    target.scrollIntoView()
+
+    target.classList.remove('highlight-target')
+    void target.offsetWidth // Restart the animation if the same target is highlighted again
+    target.classList.add('highlight-target')
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     hljs.highlightAll()
     document.querySelector("#navigation_tree").scrollTop = localStorage.getItem('navtree_scroll') || 0
+    highlightFragmentTarget()
 })
+
+window.addEventListener('hashchange', highlightFragmentTarget)
 
 setTheme(getTheme())
