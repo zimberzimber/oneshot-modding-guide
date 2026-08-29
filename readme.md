@@ -2,8 +2,7 @@
 Guide to modding OneShot, specifically the 2016 release.  
 Not Freeware, not World Machine Edition.  
 
-You can either download the repository and open the `obsidian` folder as a vault
-Or you can browse the guide online at #TODO
+You can either download the repository and open the `obsidian` folder as a vault, or [browse the guide online](https://zimberzimber.github.io/oneshot-modding-guide/).
 
 Documented using [Obsidian](https://obsidian.md/).
 Plugins used:
