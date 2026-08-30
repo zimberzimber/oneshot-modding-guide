@@ -6,7 +6,7 @@ Technically you can use this for comparing, copying, and cleaning any two folder
 ## Setup
 - Install Ruby
 - Create a new text file, copy the contents from below into it, and save it with the `.rb` extension.
-(i.e `cleanup_script.rb`)
+(e.g. `cleanup_script.rb`)
 
 
 ## Building the Catalogue

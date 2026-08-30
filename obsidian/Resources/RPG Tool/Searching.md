@@ -11,7 +11,7 @@ I suggest using using it if you're new to this kind of thing.
 So let's say you want to find all instances where the `geothermal` track is used.
 Open the search dialogue, and set it up like so:
 ![[searching_1.png]]
-This configures the search to scan all files in the specified directory for the text `geothermal`, matching only if the entire word matches (i.e wouldn't match `ggeothermal` for example).
+This configures the search to scan all files in the specified directory for the text `geothermal`, matching only if the entire word matches (e.g. wouldn't match `ggeothermal` for example).
 
 The result of which might look something like this:
 ![[searching_2.png]]
