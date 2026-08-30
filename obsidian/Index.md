@@ -31,8 +31,8 @@ And don't be shy to share you experience with others in need of help!
 Propagate your knowledge and offer guidance where you're able, so that everyone can have an easier time realizing their ideas, and expressing their love for this silly not-a-cat game!
 
 I also encourage you to use my other mods for reference.
-Metamorphosis and Frostide were somewhat made with that in mind.
-Fading Memory less so, and someone may not be too happy about you digging through it.
+[Metamorphosis](https://zimberzimber.itch.io/oneshot-metamorphosis) and [Frostide](https://zimberzimber.itch.io/oneshot-frostide) were somewhat made with that in mind.
+[Fading Memory](https://store.steampowered.com/app/1569440/OneShot_Fading_Memory/) less so, and _<span style="background:#1E1E1E;color:#FF4040;">someone</span>_ may not be too happy about you digging through.
 
 
 ## Source and Contribution
