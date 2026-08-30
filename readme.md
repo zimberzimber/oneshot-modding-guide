@@ -1,4 +1,4 @@
-# OneShot Modding Guide (WIP)
+# OneShot Modding Guide
 Guide to modding OneShot, specifically the 2016 release.  
 Not Freeware, not World Machine Edition.  
 
